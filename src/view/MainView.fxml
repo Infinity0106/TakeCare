@@ -1,15 +1,128 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0d8aff00" height="365.0" layoutX="811.0" layoutY="112.0" stroke="BLACK" strokeType="INSIDE" width="116.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0d8aff00" height="365.0" layoutX="247.0" layoutY="112.0" stroke="BLACK" strokeType="INSIDE" width="564.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#434343" height="772.0" layoutX="-1.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
-      <JFXButton buttonType="RAISED" layoutX="46.0" layoutY="44.0" style="-fx-background-color: blue;" text="RESIDENTES" textFill="WHITE" />
-      <JFXButton buttonType="RAISED" layoutX="46.0" layoutY="114.0" style="-fx-background-color: blue;" text="AGREGAR &#10;RESIDENTES" textAlignment="CENTER" textFill="WHITE" />
-      <JFXButton buttonType="RAISED" layoutX="38.0" layoutY="193.0" style="-fx-background-color: BLUE;" text="AGREGAR&#10;MEDICAMENTO" textAlignment="CENTER" textFill="WHITE" />
-      <JFXButton buttonType="RAISED" layoutX="37.0" layoutY="269.0" style="-fx-background-color: BLUE;" text="SUBMINISTRAR&#10;MEDICAMENTO" textFill="WHITE" />
+      <JFXButton buttonType="RAISED" layoutX="46.0" layoutY="44.0" style="-fx-background-color: Grey;" text="RESIDENTES" textFill="WHITE" />
+      <JFXButton buttonType="RAISED" layoutX="46.0" layoutY="114.0" style="-fx-background-color: grey;" text="AGREGAR &#10;RESIDENTES" textAlignment="CENTER" textFill="WHITE" />
+      <JFXButton buttonType="RAISED" layoutX="38.0" layoutY="193.0" style="-fx-background-color: grey;" text="AGREGAR&#10;MEDICAMENTO" textAlignment="CENTER" textFill="WHITE">
+         <effect>
+            <ColorAdjust />
+         </effect></JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="37.0" layoutY="269.0" style="-fx-background-color: grey;" text="SUBMINISTRAR&#10;MEDICAMENTO" textFill="WHITE" />
+      <ImageView fitHeight="78.0" fitWidth="98.0" layoutX="255.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Downloads/13923736.jpeg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="111.0" fitWidth="78.0" layoutX="255.0" layoutY="245.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Downloads/13923736.jpeg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="111.0" fitWidth="78.0" layoutX="255.0" layoutY="359.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Downloads/13923736.jpeg" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d8d8d8" height="44.0" layoutX="247.0" layoutY="68.0" stroke="BLACK" strokeType="INSIDE" width="681.0" />
+      <Text layoutX="260.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" wrappingWidth="68.00390625">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Text>
+      <Text layoutX="408.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha de Nacimiento" wrappingWidth="190.00390625">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Text>
+      <Text layoutX="611.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Estatus" wrappingWidth="68.00390625">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Text>
+      <Text layoutX="714.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lugar" wrappingWidth="68.00390625">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Text>
+      <Text layoutX="260.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Juan Perez" wrappingWidth="68.00390625">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Text>
+      <Text layoutX="260.0" layoutY="344.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Juan Perez" wrappingWidth="68.00390625">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Text>
+      <Text layoutX="260.0" layoutY="460.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Juan Perez" wrappingWidth="68.00390625">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Text>
+      <Text layoutX="434.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="24/05/1956" wrappingWidth="116.00001156330109">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="434.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="24/05/1956" wrappingWidth="116.00001156330109">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="434.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="24/05/1956" wrappingWidth="116.00001156330109">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Line endX="360.0" layoutX="550.0" layoutY="237.0" startX="-295.0" />
+      <Line endX="360.0" layoutX="550.0" layoutY="347.0" startX="-295.0" />
+      <Line endX="360.0" layoutX="550.0" layoutY="476.0" startX="-295.0" />
+      <Text layoutX="587.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Residente" wrappingWidth="116.00001156330109">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="587.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Muerto" wrappingWidth="116.00001156330109">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="587.0" layoutY="404.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fuera" wrappingWidth="116.00001156330109">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="690.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2do piso" wrappingWidth="116.00001156330109">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="679.0" layoutY="299.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2do piso" wrappingWidth="116.00001156330109">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="679.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2do piso" wrappingWidth="116.00001156330109">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <JFXButton buttonType="RAISED" layoutX="840.0" layoutY="153.0" style="-fx-background-color: grey;" text="Ver" textAlignment="CENTER" textFill="WHITE" />
+      <JFXButton buttonType="RAISED" layoutX="840.0" layoutY="269.0" style="-fx-background-color: grey;" text="Ver&#10;" textAlignment="CENTER" textFill="WHITE" />
+      <JFXButton buttonType="RAISED" layoutX="840.0" layoutY="391.0" style="-fx-background-color: grey;" text="Ver&#10;" textAlignment="CENTER" textFill="WHITE" />
    </children>
 </AnchorPane>
