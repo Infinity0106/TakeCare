@@ -5,19 +5,26 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
-
+import view.createDB;
 
 public class Main extends Application {
+	public static Stage primaryStage;
 	@Override
-	public void start(Stage primaryStage) {
+	public void start(Stage primaryStageArg) {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("/view/MainView.fxml"));
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			primaryStage.setScene(scene);
-			primaryStage.setResizable(false);
-			primaryStage.show();
+			primaryStageArg.setScene(scene);
+			primaryStageArg.setResizable(false);
+			primaryStageArg.show();
+			primaryStage = primaryStageArg;
 		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		try {
+			createDB.main(null);
+		}catch(Exception e) {
 			e.printStackTrace();
 		}
 	}

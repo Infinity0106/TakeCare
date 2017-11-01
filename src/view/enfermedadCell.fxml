@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141" fx:controller="view.enfermedadCellController">
+   <children>
+      <Rectangle arcWidth="5.0" fill="WHITE" height="100.0" stroke="#d8d8d8" strokeType="INSIDE" width="724.0" />
+      <Label fx:id="nombre" alignment="TOP_LEFT" layoutX="22.0" layoutY="13.0" prefHeight="76.0" prefWidth="127.0" text="lsjgflaksfdjladskdjflaskdjflasjfkalsdjflsfjlasdfjasldjfalsdkfjlasdjflasdfj" wrapText="true">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="sintomas" alignment="TOP_LEFT" layoutX="177.0" layoutY="13.0" prefHeight="76.0" prefWidth="242.0" text="Sintomas" wrapText="true">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="tratamiento" alignment="TOP_LEFT" layoutX="425.0" layoutY="13.0" prefHeight="76.0" prefWidth="272.0" text="Tratamiento" wrapText="true">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
