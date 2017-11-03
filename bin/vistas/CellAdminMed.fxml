@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Rectangle arcWidth="5.0" fill="WHITE" height="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="702.0" />
+      <AnchorPane>
+         <children>
+            <Label alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="80.0" prefWidth="206.0" text="Nombre " wrapText="true">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label alignment="TOP_LEFT" layoutX="228.0" layoutY="10.0" prefHeight="80.0" prefWidth="166.0" text="Medicamento" wrapText="true">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label alignment="TOP_LEFT" layoutX="405.0" layoutY="10.0" prefHeight="80.0" prefWidth="118.0" text="Dosis" wrapText="true">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label alignment="TOP_LEFT" layoutX="523.0" layoutY="10.0" prefHeight="80.0" prefWidth="94.0" text="Horario" wrapText="true">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <JFXButton buttonType="RAISED" layoutX="629.0" layoutY="12.0" prefHeight="80.0" prefWidth="59.0" style="-fx-background-color: #d8d8d8;" text="Listo" />
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.SubministrarMedicamentoController">
+   <children>
+      <Rectangle arcWidth="5.0" fill="#434343" height="772.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
+      <JFXButton buttonType="RAISED" layoutX="37.0" layoutY="50.0" onAction="#navResidenteAction" prefHeight="44.0" prefWidth="125.0" style="-fx-background-color: grey;" text="RESIDENTES" textAlignment="CENTER" textFill="WHITE" />
+      <JFXButton buttonType="RAISED" layoutX="38.0" layoutY="104.0" onAction="#navAddResAction" prefHeight="44.0" prefWidth="125.0" style="-fx-background-color: grey;" text="AGREGAR &#10;RESIDENTES" textAlignment="CENTER" textFill="WHITE" />
+      <JFXButton buttonType="RAISED" layoutX="39.0" layoutY="157.0" onAction="#navSubMedAction" prefWidth="125.0" style="-fx-background-color: grey;" text="SUBMINISTART&#10;MEDICAMENTO" textAlignment="CENTER" textFill="WHITE" />
+      <JFXButton buttonType="RAISED" layoutX="38.0" layoutY="210.0" onAction="#navAddMedAction" prefWidth="125.0" style="-fx-background-color: grey;" text="AGREGAR&#10;MEDICAMENTO" textAlignment="CENTER" textFill="WHITE" />
+      <JFXButton buttonType="RAISED" layoutX="37.0" layoutY="263.0" onAction="#navRegEveAction" prefWidth="125.0" style="-fx-background-color: grey;" text="REGISTRAR&#10;EVENTO" textAlignment="CENTER" textFill="WHITE" />
+      <Label layoutX="212.0" layoutY="12.0" text="SUBMINISTRAR MEDICAMENTO">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Label>
+      <Line endX="345.0" layoutX="337.0" layoutY="51.0" startX="-127.0" />
+      <ScrollPane hbarPolicy="NEVER" layoutX="213.0" layoutY="66.0" prefHeight="687.0" prefWidth="792.0">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="681.0" prefWidth="792.0" style="-fx-background-color: white;">
+               <children>
+                  <Rectangle arcWidth="5.0" fill="WHITE" height="339.0" layoutX="12.0" layoutY="12.0" stroke="#00000059" strokeType="INSIDE" width="756.0" />
+                  <Rectangle arcWidth="5.0" fill="WHITE" height="29.0" layoutX="28.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="147.0" />
+                  <Label layoutX="30.0" layoutY="-2.0" text="Administrar">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Rectangle arcWidth="5.0" fill="WHITE" height="291.0" layoutX="13.0" layoutY="379.0" stroke="#00000059" strokeType="INSIDE" width="756.0" />
+                  <Rectangle arcWidth="5.0" fill="WHITE" height="29.0" layoutX="29.0" layoutY="367.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="168.0" />
+                  <Label layoutX="31.0" layoutY="365.0" text="Recordatorio">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Rectangle arcWidth="5.0" fill="#979797" height="44.0" layoutX="38.0" layoutY="405.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="704.0" />
+                  <Label layoutX="52.0" layoutY="417.0" text="Nombre">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="256.0" layoutY="418.0" text="Familiar &amp; telefono">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="480.0" layoutY="417.0" text="Medicamento">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <ScrollPane hbarPolicy="NEVER" layoutX="38.0" layoutY="449.0" prefHeight="201.0" prefWidth="704.0">
+                    <content>
+                      <AnchorPane fx:id="scrollRecMed" minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="702.0" />
+                    </content>
+                  </ScrollPane>
+                  <Rectangle arcWidth="5.0" fill="#979797" height="44.0" layoutX="37.0" layoutY="29.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="704.0" />
+                  <Label layoutX="51.0" layoutY="41.0" text="Nombre">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="419.0" layoutY="41.0" text="Dosis">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="256.0" layoutY="42.0" text="Medicamento">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <ScrollPane hbarPolicy="NEVER" layoutX="37.0" layoutY="73.0" prefHeight="255.0" prefWidth="704.0">
+                     <content>
+                        <AnchorPane fx:id="scrollAdminMed" minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="702.0" />
+                     </content>
+                  </ScrollPane>
+                  <Label layoutX="556.0" layoutY="41.0" text="Horario">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

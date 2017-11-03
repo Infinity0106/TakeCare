@@ -3,6 +3,8 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXDialog?>
+<?import com.jfoenix.controls.JFXDialogLayout?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
@@ -10,33 +12,28 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141">
+<AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.AgregarResidenteController">
    <children>
       <Rectangle arcWidth="5.0" fill="#434343" height="772.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
-      <JFXButton fx:id="NavResidente" buttonType="RAISED" layoutX="38.0" layoutY="50.0" onAction="#loadAddResidente" prefHeight="44.0" prefWidth="125.0" style="-fx-background-color: grey;" text="AGREGAR &#10;RESIDENTES" textAlignment="CENTER" textFill="WHITE" />
-      <JFXButton fx:id="AgregarResidentesNAV1" buttonType="RAISED" layoutX="39.0" layoutY="103.0" onAction="#loadAddResidente" prefWidth="125.0" style="-fx-background-color: grey;" text="SUBMINISTART&#10;MEDICAMENTO" textAlignment="CENTER" textFill="WHITE" />
-      <JFXButton fx:id="AgregarResidentesNAV11" buttonType="RAISED" layoutX="38.0" layoutY="156.0" onAction="#loadAddResidente" prefWidth="125.0" style="-fx-background-color: grey;" text="AGREGAR&#10;MEDICAMENTO" textAlignment="CENTER" textFill="WHITE" />
-      <JFXButton fx:id="AgregarResidentesNAV111" buttonType="RAISED" layoutX="37.0" layoutY="209.0" onAction="#loadAddResidente" prefWidth="125.0" style="-fx-background-color: grey;" text="REGISTRAR&#10;EVENTO" textAlignment="CENTER" textFill="WHITE" />
-      <JFXButton fx:id="AgregarResidentesNAV1111" buttonType="RAISED" layoutX="38.0" layoutY="262.0" onAction="#loadAddResidente" prefWidth="125.0" style="-fx-background-color: grey;" text="HISTORIAL&#10;PACIENTE" textAlignment="CENTER" textFill="WHITE" />
+      <JFXButton buttonType="RAISED" layoutX="36.0" layoutY="52.0" onAction="#navResidenteAction" prefHeight="44.0" prefWidth="125.0" style="-fx-background-color: grey;" text="RESIDENTES" textAlignment="CENTER" textFill="WHITE" />
+      <JFXButton buttonType="RAISED" layoutX="37.0" layoutY="106.0" onAction="#navAddResAction" prefHeight="44.0" prefWidth="125.0" style="-fx-background-color: grey;" text="AGREGAR &#10;RESIDENTES" textAlignment="CENTER" textFill="WHITE" />
+      <JFXButton buttonType="RAISED" layoutX="38.0" layoutY="159.0" onAction="#navSubMedAction" prefWidth="125.0" style="-fx-background-color: grey;" text="SUBMINISTART&#10;MEDICAMENTO" textAlignment="CENTER" textFill="WHITE" />
+      <JFXButton buttonType="RAISED" layoutX="37.0" layoutY="212.0" onAction="#navAddMedAction" prefWidth="125.0" style="-fx-background-color: grey;" text="AGREGAR&#10;MEDICAMENTO" textAlignment="CENTER" textFill="WHITE" />
+      <JFXButton buttonType="RAISED" layoutX="36.0" layoutY="265.0" onAction="#navRegEveAction" prefWidth="125.0" style="-fx-background-color: grey;" text="REGISTRAR&#10;EVENTO" textAlignment="CENTER" textFill="WHITE" />
       <Label layoutX="212.0" layoutY="12.0" text="AGREGAR RESIDENTE">
          <font>
             <Font size="32.0" />
          </font>
       </Label>
       <Line endX="215.0" layoutX="337.0" layoutY="51.0" startX="-127.0" />
-      <JFXButton buttonType="RAISED" layoutX="213.0" layoutY="696.0" prefHeight="56.0" prefWidth="792.0" style="-fx-background-color: #d8d8d8;" text="Agregar Residente">
-         <font>
-            <Font size="25.0" />
-         </font>
-      </JFXButton>
-      <ScrollPane hbarPolicy="NEVER" layoutX="213.0" layoutY="66.0" prefHeight="2000.0" prefWidth="792.0">
+      <ScrollPane hbarPolicy="NEVER" layoutX="213.0" layoutY="66.0" prefHeight="604.0" prefWidth="792.0">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1897.0" prefWidth="792.0" style="-fx-background-color: white;">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1887.0" prefWidth="792.0" style="-fx-background-color: white;">
                <children>
                   <Rectangle arcWidth="5.0" fill="WHITE" height="250.0" layoutX="12.0" layoutY="12.0" stroke="#00000059" strokeType="INSIDE" width="756.0" />
                   <Rectangle arcWidth="5.0" fill="WHITE" height="29.0" layoutX="28.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="145.0" />
@@ -45,54 +42,54 @@
                         <Font size="25.0" />
                      </font>
                   </Label>
-                  <JFXTextField focusColor="BLACK" layoutX="19.0" layoutY="48.0" prefHeight="35.0" prefWidth="338.0">
+                  <JFXTextField fx:id="infNombre" focusColor="BLACK" layoutX="36.0" layoutY="48.0" prefHeight="35.0" prefWidth="338.0">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </JFXTextField>
-                  <Label layoutX="19.0" layoutY="31.0" text="Nombre">
+                  <Label layoutX="36.0" layoutY="31.0" text="Nombre">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <Label layoutX="370.0" layoutY="31.0" text="Fecha Nacimiento">
+                  <Label layoutX="387.0" layoutY="31.0" text="Fecha Nacimiento">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <JFXDatePicker defaultColor="BLACK" layoutX="371.0" layoutY="56.0" />
-                  <Label layoutX="566.0" layoutY="31.0" text="Sexo">
+                  <JFXDatePicker fx:id="infFecha" defaultColor="BLACK" layoutX="388.0" layoutY="56.0" />
+                  <Label layoutX="583.0" layoutY="31.0" text="Sexo">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <JFXComboBox focusColor="BLACK" layoutX="566.0" layoutY="56.0" prefHeight="27.0" prefWidth="143.0" />
-                  <ImageView fitHeight="136.0" fitWidth="200.0" layoutX="20.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true">
+                  <JFXComboBox fx:id="infSex" focusColor="BLACK" layoutX="583.0" layoutY="56.0" prefHeight="27.0" prefWidth="143.0" />
+                  <ImageView fx:id="infFoto" fitHeight="136.0" fitWidth="200.0" layoutX="37.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../lib/Placeholder.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="19.0" layoutY="96.0" text="Foto">
+                  <Label layoutX="36.0" layoutY="96.0" text="Foto">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <JFXTextField focusColor="BLACK" layoutX="374.0" layoutY="113.0" prefHeight="35.0" prefWidth="338.0">
+                  <JFXTextField fx:id="infLugar" focusColor="BLACK" layoutX="391.0" layoutY="113.0" prefHeight="35.0" prefWidth="338.0">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </JFXTextField>
-                  <Label layoutX="374.0" layoutY="96.0" text="Lugar">
+                  <Label layoutX="391.0" layoutY="96.0" text="Lugar">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <JFXTextField focusColor="BLACK" layoutX="374.0" layoutY="177.0" prefHeight="35.0" prefWidth="338.0">
+                  <JFXTextField fx:id="infCama" focusColor="BLACK" layoutX="391.0" layoutY="177.0" prefHeight="35.0" prefWidth="338.0">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </JFXTextField>
-                  <Label layoutX="374.0" layoutY="160.0" text="Cama">
+                  <Label layoutX="391.0" layoutY="160.0" text="Cama">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -104,88 +101,88 @@
                         <Font size="25.0" />
                      </font>
                   </Label>
-                  <JFXTextField focusColor="BLACK" layoutX="23.0" layoutY="323.0" prefHeight="35.0" prefWidth="338.0">
+                  <JFXTextField fx:id="famNombre" focusColor="BLACK" layoutX="40.0" layoutY="323.0" prefHeight="35.0" prefWidth="338.0">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </JFXTextField>
-                  <Label layoutX="23.0" layoutY="306.0" text="Nombre">
+                  <Label layoutX="40.0" layoutY="306.0" text="Nombre">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <JFXTextField focusColor="BLACK" layoutX="378.0" layoutY="324.0" prefHeight="35.0" prefWidth="338.0">
+                  <JFXTextField fx:id="famCorreo" focusColor="BLACK" layoutX="395.0" layoutY="324.0" prefHeight="35.0" prefWidth="338.0">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </JFXTextField>
-                  <Label layoutX="378.0" layoutY="307.0" text="Correo">
+                  <Label layoutX="395.0" layoutY="307.0" text="Correo">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <JFXTextField focusColor="BLACK" layoutX="27.0" layoutY="389.0" prefHeight="35.0" prefWidth="158.0">
+                  <JFXTextField fx:id="famTel" focusColor="BLACK" layoutX="44.0" layoutY="389.0" prefHeight="35.0" prefWidth="158.0">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </JFXTextField>
-                  <Label layoutX="27.0" layoutY="372.0" text="Telefono">
+                  <Label layoutX="44.0" layoutY="372.0" text="Telefono">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <Label layoutX="196.0" layoutY="372.0" text="Relacion">
+                  <Label layoutX="213.0" layoutY="372.0" text="Relacion">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <JFXComboBox focusColor="BLACK" layoutX="195.0" layoutY="397.0" prefHeight="27.0" prefWidth="163.0" />
-                  <JFXTextField focusColor="BLACK" layoutX="27.0" layoutY="451.0" prefHeight="35.0" prefWidth="338.0">
+                  <JFXComboBox fx:id="famRel" focusColor="BLACK" layoutX="212.0" layoutY="397.0" prefHeight="27.0" prefWidth="163.0" />
+                  <JFXTextField fx:id="famCalle" focusColor="BLACK" layoutX="44.0" layoutY="451.0" prefHeight="35.0" prefWidth="338.0">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </JFXTextField>
-                  <Label layoutX="27.0" layoutY="434.0" text="Calle">
+                  <Label layoutX="44.0" layoutY="434.0" text="Calle">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <JFXTextField focusColor="BLACK" layoutX="380.0" layoutY="387.0" prefHeight="35.0" prefWidth="163.0">
+                  <JFXTextField fx:id="famMun" focusColor="BLACK" layoutX="397.0" layoutY="387.0" prefHeight="35.0" prefWidth="163.0">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </JFXTextField>
-                  <Label layoutX="380.0" layoutY="370.0" text="Municipio">
+                  <Label layoutX="397.0" layoutY="370.0" text="Municipio">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <JFXTextField focusColor="BLACK" layoutX="552.0" layoutY="387.0" prefHeight="35.0" prefWidth="163.0">
+                  <JFXTextField fx:id="famEst" focusColor="BLACK" layoutX="569.0" layoutY="387.0" prefHeight="35.0" prefWidth="163.0">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </JFXTextField>
-                  <Label layoutX="552.0" layoutY="370.0" text="Estado">
+                  <Label layoutX="569.0" layoutY="370.0" text="Estado">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <JFXTextField focusColor="BLACK" layoutX="381.0" layoutY="450.0" prefHeight="35.0" prefWidth="163.0">
+                  <JFXTextField fx:id="famCol" focusColor="BLACK" layoutX="398.0" layoutY="450.0" prefHeight="35.0" prefWidth="163.0">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </JFXTextField>
-                  <Label layoutX="381.0" layoutY="433.0" text="Colonia">
+                  <Label layoutX="398.0" layoutY="433.0" text="Colonia">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <JFXTextField focusColor="BLACK" layoutX="553.0" layoutY="450.0" prefHeight="35.0" prefWidth="163.0">
+                  <JFXTextField fx:id="famPais" focusColor="BLACK" layoutX="570.0" layoutY="450.0" prefHeight="35.0" prefWidth="163.0">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </JFXTextField>
-                  <Label layoutX="553.0" layoutY="433.0" text="Pais">
+                  <Label layoutX="570.0" layoutY="433.0" text="Pais">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -197,117 +194,269 @@
                         <Font size="25.0" />
                      </font>
                   </Label>
-                  <Label layoutX="23.0" layoutY="569.0" text="Datos de anamnesis">
+                  <Label layoutX="40.0" layoutY="569.0" text="Datos de anamnesis">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <JFXTextArea focusColor="BLACK" layoutX="24.0" layoutY="587.0" prefHeight="172.0" prefWidth="337.0" />
-                  <Label layoutX="381.0" layoutY="569.0" text="Resultados de examenes">
+                  <JFXTextArea fx:id="hmedAnamnesis" focusColor="BLACK" layoutX="41.0" layoutY="587.0" prefHeight="172.0" prefWidth="337.0" />
+                  <Label layoutX="398.0" layoutY="569.0" text="Resultados de examenes">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <JFXTextArea focusColor="BLACK" layoutX="381.0" layoutY="587.0" prefHeight="172.0" prefWidth="337.0" />
-                  <Label layoutX="25.0" layoutY="777.0" text="Diagnostico">
+                  <JFXTextArea fx:id="hmedExamenes" focusColor="BLACK" layoutX="398.0" layoutY="587.0" prefHeight="172.0" prefWidth="337.0" />
+                  <Label layoutX="42.0" layoutY="777.0" text="Diagnostico">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <JFXTextArea focusColor="BLACK" layoutX="26.0" layoutY="795.0" prefHeight="172.0" prefWidth="337.0" />
-                  <Label layoutX="383.0" layoutY="777.0" text="Pronostico">
+                  <JFXTextArea fx:id="hmedDiag" focusColor="BLACK" layoutX="43.0" layoutY="795.0" prefHeight="172.0" prefWidth="337.0" />
+                  <Label layoutX="400.0" layoutY="777.0" text="Pronostico">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <JFXTextArea focusColor="BLACK" layoutX="383.0" layoutY="795.0" prefHeight="172.0" prefWidth="337.0" />
-                  <Label layoutX="25.0" layoutY="984.0" text="Tratamiento">
+                  <JFXTextArea fx:id="hmedPro" focusColor="BLACK" layoutX="400.0" layoutY="795.0" prefHeight="172.0" prefWidth="337.0" />
+                  <Label layoutX="42.0" layoutY="984.0" text="Tratamiento">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <JFXTextArea focusColor="BLACK" layoutX="26.0" layoutY="1002.0" prefHeight="158.0" prefWidth="337.0" />
-                  <JFXTextField focusColor="BLACK" layoutX="383.0" layoutY="1000.0" prefHeight="35.0" prefWidth="338.0">
+                  <JFXTextArea fx:id="hmedTrata" focusColor="BLACK" layoutX="43.0" layoutY="1002.0" prefHeight="158.0" prefWidth="337.0" />
+                  <JFXTextField fx:id="hmedDoc" focusColor="BLACK" layoutX="400.0" layoutY="1000.0" prefHeight="35.0" prefWidth="338.0">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </JFXTextField>
-                  <Label layoutX="383.0" layoutY="983.0" text="Doctor">
+                  <Label layoutX="400.0" layoutY="983.0" text="Doctor">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <JFXTextField focusColor="BLACK" layoutX="384.0" layoutY="1065.0" prefHeight="35.0" prefWidth="338.0">
+                  <JFXTextField fx:id="hmedCedu" focusColor="BLACK" layoutX="401.0" layoutY="1065.0" prefHeight="35.0" prefWidth="338.0">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </JFXTextField>
-                  <Label layoutX="384.0" layoutY="1048.0" text="Cedula">
+                  <Label layoutX="401.0" layoutY="1048.0" text="Cedula">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <JFXTextField focusColor="BLACK" layoutX="383.0" layoutY="1130.0" prefHeight="35.0" prefWidth="338.0">
+                  <JFXTextField fx:id="hmedEsp" focusColor="BLACK" layoutX="401.0" layoutY="1130.0" prefHeight="35.0" prefWidth="338.0">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </JFXTextField>
-                  <Label layoutX="383.0" layoutY="1113.0" text="Especialidad">
+                  <Label layoutX="401.0" layoutY="1113.0" text="Especialidad">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <Rectangle arcWidth="5.0" fill="WHITE" height="377.0" layoutX="13.0" layoutY="1209.0" stroke="#00000059" strokeType="INSIDE" width="756.0" />
+                  <Rectangle arcWidth="5.0" fill="WHITE" height="381.0" layoutX="13.0" layoutY="1209.0" stroke="#00000059" strokeType="INSIDE" width="756.0" />
                   <Rectangle arcWidth="5.0" fill="WHITE" height="29.0" layoutX="29.0" layoutY="1197.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="261.0" />
                   <Label layoutX="31.0" layoutY="1195.0" text="Informacion Adicional">
                      <font>
                         <Font size="25.0" />
                      </font>
                   </Label>
-                  <JFXButton buttonType="RAISED" layoutX="26.0" layoutY="1239.0" prefWidth="200.0" style="-fx-background-color: #d8d8d8;" text="Agregar Enfermedad">
+                  <JFXButton buttonType="RAISED" layoutX="43.0" layoutY="1239.0" onAction="#infoAddEnfAction" prefHeight="29.0" prefWidth="333.0" style="-fx-background-color: #d8d8d8;" text="Agregar Enfermedad">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton buttonType="RAISED" layoutX="277.0" layoutY="1239.0" prefWidth="200.0" style="-fx-background-color: #d8d8d8;" text="Agregar Alergia">
+                  <JFXButton buttonType="RAISED" layoutX="405.0" layoutY="1239.0" onAction="#infoAddOpAction" prefHeight="29.0" prefWidth="332.0" style="-fx-background-color: #d8d8d8;" text="Agregar Operacion">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton buttonType="RAISED" layoutX="520.0" layoutY="1239.0" prefWidth="200.0" style="-fx-background-color: #d8d8d8;" text="Agregar Operacion">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </JFXButton>
-                  <Rectangle arcWidth="5.0" fill="#b9b9b9" height="50.0" layoutX="25.0" layoutY="1290.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="695.0" />
-                  <Label layoutX="43.0" layoutY="1305.0" text="Tipo">
+                  <Rectangle arcWidth="5.0" fill="#b9b9b9" height="50.0" layoutX="42.0" layoutY="1290.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="695.0" />
+                  <Label layoutX="60.0" layoutY="1305.0" text="Tipo">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <Label layoutX="110.0" layoutY="1306.0" text="Nombre">
+                  <Label layoutX="127.0" layoutY="1306.0" text="Nombre">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <Label layoutX="285.0" layoutY="1306.0" text="Sintomas o fecha">
+                  <Label layoutX="302.0" layoutY="1306.0" text="Sintomas o fecha">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <Label layoutX="501.0" layoutY="1306.0" text="Tratamiento o tipo">
+                  <Label layoutX="518.0" layoutY="1306.0" text="Tratamiento o tipo">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <ScrollPane layoutX="26.0" layoutY="1340.0" prefHeight="234.0" prefWidth="694.0">
+                  <ScrollPane layoutX="43.0" layoutY="1337.0" prefHeight="234.0" prefWidth="694.0">
                     <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="226.0" prefWidth="692.0" />
+                      <AnchorPane fx:id="scrollInfoAdicional" minHeight="0.0" minWidth="0.0" prefHeight="226.0" prefWidth="692.0" />
                     </content>
                   </ScrollPane>
+                  <Rectangle arcWidth="5.0" fill="WHITE" height="237.0" layoutX="13.0" layoutY="1614.0" stroke="#00000059" strokeType="INSIDE" width="756.0" />
+                  <Rectangle arcWidth="5.0" fill="WHITE" height="29.0" layoutX="29.0" layoutY="1602.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="294.0" />
+                  <Label layoutX="31.0" layoutY="1600.0" text="Servicios de emergencia">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="servCodigo" focusColor="BLACK" layoutX="44.0" layoutY="1655.0" prefHeight="35.0" prefWidth="338.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </JFXTextField>
+                  <Label layoutX="44.0" layoutY="1638.0" text="Codigo">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="servHosp" focusColor="BLACK" layoutX="399.0" layoutY="1656.0" prefHeight="35.0" prefWidth="338.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </JFXTextField>
+                  <Label layoutX="399.0" layoutY="1639.0" text="Hospital">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Rectangle arcWidth="5.0" fill="WHITE" height="29.0" layoutX="33.0" layoutY="2934.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="294.0" />
+                  <JFXTextField fx:id="servMun" focusColor="BLACK" layoutX="45.0" layoutY="1720.0" prefHeight="35.0" prefWidth="338.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </JFXTextField>
+                  <Label layoutX="45.0" layoutY="1703.0" text="Municipio">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="servEst" focusColor="BLACK" layoutX="400.0" layoutY="1721.0" prefHeight="35.0" prefWidth="338.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </JFXTextField>
+                  <Label layoutX="400.0" layoutY="1704.0" text="Estado">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="servDir" focusColor="BLACK" layoutX="46.0" layoutY="1785.0" prefHeight="35.0" prefWidth="338.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </JFXTextField>
+                  <Label layoutX="46.0" layoutY="1768.0" text="Direccion">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
         </content>
       </ScrollPane>
+      <JFXDialog fx:id="dialogParent">
+         <children>
+            <JFXDialogLayout fx:id="dialogLayout">
+               <children>
+                  <StackPane fx:id="stackAddEnfermedad" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+                     <children>
+                        <Rectangle arcWidth="5.0" fill="WHITE" height="400.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="600.0" />
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="10.0" layoutY="11.0" text="Agregar Enfermedad">
+                                 <font>
+                                    <Font size="25.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="7.0" layoutY="49.0" text="Nombre">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <JFXTextField fx:id="addEnfermedadNombre" focusColor="BLACK" layoutX="8.0" layoutY="67.0" prefHeight="35.0" prefWidth="578.0">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </JFXTextField>
+                              <Label layoutX="10.0" layoutY="113.0" text="Sintoma">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <JFXTextField fx:id="addEnfermedadSintoma" focusColor="BLACK" layoutX="11.0" layoutY="131.0" prefHeight="35.0" prefWidth="578.0">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </JFXTextField>
+                              <Label layoutX="11.0" layoutY="179.0" text="Tratamiento">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <JFXTextField fx:id="addEnfermedadTratamiento" focusColor="BLACK" layoutX="11.0" layoutY="197.0" prefHeight="35.0" prefWidth="578.0">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </JFXTextField>
+                              <JFXButton buttonType="RAISED" layoutX="189.0" layoutY="287.0" onAction="#dialogAddEnfermedadAction" prefHeight="47.0" prefWidth="222.0" style="-fx-background-color: #d8d8d8;" text="Agregar Enfermedad" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </StackPane>
+                  <StackPane fx:id="stackAddOperacion" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+                     <children>
+                        <Rectangle arcWidth="5.0" fill="WHITE" height="400.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="600.0" />
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="10.0" layoutY="11.0" text="Agregar Operaciones">
+                                 <font>
+                                    <Font size="25.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="7.0" layoutY="49.0" text="Nombre">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <JFXTextField fx:id="addOperacionNombre" focusColor="BLACK" layoutX="8.0" layoutY="67.0" prefHeight="35.0" prefWidth="578.0">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </JFXTextField>
+                              <Label layoutX="10.0" layoutY="113.0" text="Fecha">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="11.0" layoutY="179.0" text="Tipo">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <JFXTextField fx:id="addOperacionTratamiento" focusColor="BLACK" layoutX="11.0" layoutY="197.0" prefHeight="35.0" prefWidth="578.0">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </JFXTextField>
+                              <JFXButton buttonType="RAISED" layoutX="189.0" layoutY="287.0" onAction="#dialogAddOperacionAction" prefHeight="47.0" prefWidth="222.0" style="-fx-background-color: #d8d8d8;" text="Agregar Operacion" />
+                              <JFXDatePicker fx:id="addOperacionFecha" defaultColor="BLACK" layoutX="12.0" layoutY="146.0" prefHeight="27.0" prefWidth="578.0" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </StackPane>
+               </children>
+            </JFXDialogLayout>
+         </children>
+      </JFXDialog>
+      <JFXButton buttonType="RAISED" layoutX="213.0" layoutY="696.0" onAction="#addResidenteAction" prefHeight="56.0" prefWidth="792.0" style="-fx-background-color: #d8d8d8;" text="Agregar Residente">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

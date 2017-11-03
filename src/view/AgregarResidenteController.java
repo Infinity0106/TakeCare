@@ -29,6 +29,7 @@ import view.CambiarEscena;
 import application.Main;
 
 public class AgregarResidenteController {
+	private Residente tmpRes = new Residente();
 	private CambiarEscena adminS = new CambiarEscena();
 	@FXML
     private StackPane rootStack;
