@@ -136,6 +136,7 @@ public class AgregarResidenteController {
     @FXML
     private JFXDatePicker fechaOp;
     
+    
     @FXML
     void btnEnfermedadAction(ActionEvent event) {
 	    	diaEnfermedadParent = new JFXDialog(rootStack,diaEnfermedad,JFXDialog.DialogTransition.CENTER,true);

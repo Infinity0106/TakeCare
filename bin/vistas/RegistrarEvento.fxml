@@ -20,8 +20,10 @@
       <JFXButton buttonType="RAISED" layoutX="37.0" layoutY="42.0" onAction="#navResidenteAction" prefHeight="44.0" prefWidth="125.0" style="-fx-background-color: grey;" text="RESIDENTES" textAlignment="CENTER" textFill="WHITE" />
       <JFXButton buttonType="RAISED" layoutX="38.0" layoutY="96.0" onAction="#navAddResAction" prefHeight="44.0" prefWidth="125.0" style="-fx-background-color: grey;" text="AGREGAR &#10;RESIDENTES" textAlignment="CENTER" textFill="WHITE" />
       <JFXButton buttonType="RAISED" layoutX="39.0" layoutY="149.0" onAction="#navSubMedAction" prefWidth="125.0" style="-fx-background-color: grey;" text="SUBMINISTART&#10;MEDICAMENTO" textAlignment="CENTER" textFill="WHITE" />
-      <JFXButton buttonType="RAISED" layoutX="38.0" layoutY="202.0" onAction="#navAddMedAction" prefWidth="125.0" style="-fx-background-color: grey;" text="AGREGAR&#10;MEDICAMENTO" textAlignment="CENTER" textFill="WHITE" />
-      <JFXButton buttonType="RAISED" layoutX="37.0" layoutY="255.0" onAction="#navRegEveAction" prefWidth="125.0" style="-fx-background-color: grey;" text="REGISTRAR&#10;EVENTO" textAlignment="CENTER" textFill="WHITE" />
+      <JFXButton buttonType="RAISED" layoutX="39.0" layoutY="203.0" onAction="#navInvMedAction" prefWidth="125.0" style="-fx-background-color: grey;" text="INVENTARIO&#10;MEDICAMENTO" textAlignment="CENTER" textFill="WHITE" />
+      <JFXButton buttonType="RAISED" layoutX="40.0" layoutY="256.0" onAction="#navRecMedAction" prefWidth="125.0" style="-fx-background-color: grey;" text="RECORDATORIO&#10;MEDICAMENTO" textAlignment="CENTER" textFill="WHITE" />
+      <JFXButton buttonType="RAISED" layoutX="40.0" layoutY="310.0" onAction="#navAddMedAction" prefWidth="125.0" style="-fx-background-color: grey;" text="AGREGAR&#10;MEDICAMENTO" textAlignment="CENTER" textFill="WHITE" />
+      <JFXButton buttonType="RAISED" layoutX="39.0" layoutY="363.0" onAction="#navRegEveAction" prefWidth="125.0" style="-fx-background-color: grey;" text="REGISTRAR&#10;EVENTO" textAlignment="CENTER" textFill="WHITE" />
       <Label layoutX="212.0" layoutY="12.0" text="REGISTRAR EVENTO">
          <font>
             <Font size="32.0" />
@@ -59,11 +61,6 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <JFXButton buttonType="RAISED" layoutX="37.0" layoutY="144.0" onAction="#selBtnResAction" prefHeight="44.0" prefWidth="337.0" style="-fx-background-color: #d8d8d8;" text="Seleccionar residente">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </JFXButton>
                   <JFXComboBox fx:id="selResidente" focusColor="#d8d8d8" layoutX="37.0" layoutY="56.0" prefHeight="27.0" prefWidth="336.0" />
                   <Rectangle arcWidth="5.0" fill="WHITE" height="196.0" layoutX="13.0" layoutY="232.0" stroke="#00000059" strokeType="INSIDE" width="756.0" />
                   <Rectangle arcWidth="5.0" fill="WHITE" height="29.0" layoutX="29.0" layoutY="220.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="223.0" />

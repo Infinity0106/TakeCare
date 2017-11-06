@@ -8,7 +8,6 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
@@ -94,7 +93,7 @@ public class VerResidenteController {
     private JFXTextField hisMedEspecialidad;
 
     @FXML
-    private ScrollPane scrollInfoAdicional;
+    private AnchorPane scrollInfoAdicional;
 
     @FXML
     private JFXTextField servCodigo;
@@ -157,6 +156,23 @@ public class VerResidenteController {
     void navSubMedAction(ActionEvent event) {
     		adminNav.loadSubministrarMedicamento();
     		this.killObjects();
+    }
+    
+    @FXML
+    void navInvMedAction(ActionEvent event) {
+    		//TODO
+    		this.killObjects();
+    }
+    
+    @FXML
+    void navRecMedAction(ActionEvent event) {
+    		//TODO
+    		this.killObjects();
+    }
+    
+    @FXML
+    void addFamiliar(ActionEvent event) {
+    	
     }
 
     @FXML

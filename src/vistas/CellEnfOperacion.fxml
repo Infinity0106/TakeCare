@@ -6,28 +6,27 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.CellEnfOperacionController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="692.0" />
+      <Rectangle arcWidth="5.0" fill="WHITE" height="100.0" stroke="BLACK" strokeType="INSIDE" width="692.0" />
       <AnchorPane>
          <children>
-            <Label alignment="TOP_LEFT" layoutX="14.0" layoutY="10.0" prefHeight="80.0" prefWidth="96.0" text="Tipo" wrapText="true">
+            <Label fx:id="tipo" alignment="TOP_LEFT" layoutX="14.0" layoutY="10.0" prefHeight="80.0" prefWidth="96.0" text="Tipo" wrapText="true">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label alignment="TOP_LEFT" layoutX="121.0" layoutY="10.0" prefHeight="80.0" prefWidth="130.0" text="Nombre" wrapText="true">
+            <Label fx:id="nombre" alignment="TOP_LEFT" layoutX="121.0" layoutY="10.0" prefHeight="80.0" prefWidth="130.0" text="Nombre" wrapText="true">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label alignment="TOP_LEFT" layoutX="260.0" layoutY="10.0" prefHeight="80.0" prefWidth="186.0" text="Sintomas o fecha" wrapText="true">
+            <Label fx:id="sintomas" alignment="TOP_LEFT" layoutX="260.0" layoutY="10.0" prefHeight="80.0" prefWidth="186.0" text="Sintomas o fecha" wrapText="true">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label alignment="TOP_LEFT" layoutX="456.0" layoutY="10.0" prefHeight="80.0" prefWidth="223.0" text="Tratamiento o tipo" wrapText="true">
+            <Label fx:id="tratamiento" alignment="TOP_LEFT" layoutX="456.0" layoutY="10.0" prefHeight="80.0" prefWidth="223.0" text="Tratamiento o tipo" wrapText="true">
                <font>
                   <Font size="15.0" />
                </font>

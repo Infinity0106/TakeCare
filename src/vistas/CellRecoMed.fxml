@@ -6,22 +6,22 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.CellRecoMedController">
    <children>
       <Rectangle arcWidth="5.0" fill="WHITE" height="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="702.0" />
       <AnchorPane>
          <children>
-            <Label alignment="TOP_LEFT" layoutX="11.0" layoutY="11.0" prefHeight="80.0" prefWidth="206.0" text="Nombre persona" wrapText="true">
+            <Label fx:id="nombre" alignment="TOP_LEFT" layoutX="11.0" layoutY="11.0" prefHeight="80.0" prefWidth="206.0" text="Nombre persona" wrapText="true">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label alignment="TOP_LEFT" layoutX="229.0" layoutY="11.0" prefHeight="80.0" prefWidth="222.0" text="Familiar y telefono" wrapText="true">
+            <Label fx:id="familiar" alignment="TOP_LEFT" layoutX="229.0" layoutY="11.0" prefHeight="80.0" prefWidth="222.0" text="Familiar y telefono" wrapText="true">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label alignment="TOP_LEFT" layoutX="461.0" layoutY="11.0" prefHeight="80.0" prefWidth="229.0" text="Medicamento" wrapText="true">
+            <Label fx:id="medicamento" alignment="TOP_LEFT" layoutX="461.0" layoutY="11.0" prefHeight="80.0" prefWidth="229.0" text="Medicamento" wrapText="true">
                <font>
                   <Font size="15.0" />
                </font>

@@ -32,71 +32,71 @@ public class createDB {
 			if(res.getString("NAME").equals("RESIDENTE")) residente=false;
 		}
 		
-		if(residente) {
-		con.createStatement().execute("create table Residente (\n" + 
-				"	residenteID integer not null generated always as identity (start with 1, increment by 1) primary key,\n" + 
-				"	nombre varchar(30),\n" + 
-				"	fechaNacimiento date,\n" + 
-				"	estatus varchar(20),\n" + 
-				"	servicioEmergancias varchar(50),\n" + 
-				"	foto varchar(100),\n" + 
-				"	lugar varchar(10),\n" + 
-				"	cama varchar(10)\n" + 
-				")");
-		}
-		
-		if(enfermedades) {
-		con.createStatement().execute("create table Enfermedades ("
-				+ "id integer not null generated always as identity (start with 1, increment by 1) primary key,"
-				+ "residenteID integer references Residente(residenteID),"
-				+ "nombre varchar(30),"
-				+ "sintomas varchar(200),"
-				+ "tratamiento varchar(200)"
-				+ ")");
-		}
-		
-		if(opreaciones) {
-		con.createStatement().execute("create table Operaciones (\n" + 
-				"	id integer not null generated always as identity (start with 1, increment by 1) primary key,\n" + 
-				"	resideteID integer references Residente(residenteID),\n" + 
-				"	fecha date,\n" + 
-				"	tipo varchar(50)\n" + 
-				")");
-		}
-		
-		if(alergias) {
-		con.createStatement().execute("create table Alergias ("
-				+ "id integer not null generated always as identity(start with 1, increment by 1) primary key,"
-				+ "residenteID integer references Residente(residenteID),"
-				+ "nombre varchar(30),"
-				+ "sintomas varchar(200),"
-				+ "tratamiento varchar(200)"
-				+ ")");
-		}
-		
-		if(familiar) {
-		con.createStatement().execute("create table Familiar (\n" + 
-				"	id integer not null generated always as identity (start with 1, increment by 1) primary key,\n" + 
-				"	resideteID integer references Residente(residenteID),\n" + 
-				"	nombre varchar(50),\n" + 
-				"	correo varchar(60),\n" + 
-				"	telefono varchar(20),\n" + 
-				"	relacion varchar(20),\n" + 
-				"	domicilio varchar(50)\n" + 
-				")");
-		}
-		
-		if(medicamento) {
-		con.createStatement().execute("create table Medicamento (\n" + 
-				"	id integer not null generated always as identity (start with 1, increment by 1) primary key,\n" + 
-				"	resideteID integer references Residente(residenteID),\n" + 
-				"	nombre varchar (50),\n" + 
-				"	cantidad int,\n" + 
-				"	dosis varchar(30),\n" + 
-				"	vecesDia varchar(30),\n" + 
-				"	tipo varchar(30)\n" + 
-				")");
-		}
+//		if(residente) {
+//		con.createStatement().execute("create table Residente (\n" + 
+//				"	residenteID integer not null generated always as identity (start with 1, increment by 1) primary key,\n" + 
+//				"	nombre varchar(30),\n" + 
+//				"	fechaNacimiento date,\n" + 
+//				"	estatus varchar(20),\n" + 
+//				"	servicioEmergancias varchar(50),\n" + 
+//				"	foto varchar(100),\n" + 
+//				"	lugar varchar(10),\n" + 
+//				"	cama varchar(10)\n" + 
+//				")");
+//		}
+//		
+//		if(enfermedades) {
+//		con.createStatement().execute("create table Enfermedades ("
+//				+ "id integer not null generated always as identity (start with 1, increment by 1) primary key,"
+//				+ "residenteID integer references Residente(residenteID),"
+//				+ "nombre varchar(30),"
+//				+ "sintomas varchar(200),"
+//				+ "tratamiento varchar(200)"
+//				+ ")");
+//		}
+//		
+//		if(opreaciones) {
+//		con.createStatement().execute("create table Operaciones (\n" + 
+//				"	id integer not null generated always as identity (start with 1, increment by 1) primary key,\n" + 
+//				"	resideteID integer references Residente(residenteID),\n" + 
+//				"	fecha date,\n" + 
+//				"	tipo varchar(50)\n" + 
+//				")");
+//		}
+//		
+//		if(alergias) {
+//		con.createStatement().execute("create table Alergias ("
+//				+ "id integer not null generated always as identity(start with 1, increment by 1) primary key,"
+//				+ "residenteID integer references Residente(residenteID),"
+//				+ "nombre varchar(30),"
+//				+ "sintomas varchar(200),"
+//				+ "tratamiento varchar(200)"
+//				+ ")");
+//		}
+//		
+//		if(familiar) {
+//		con.createStatement().execute("create table Familiar (\n" + 
+//				"	id integer not null generated always as identity (start with 1, increment by 1) primary key,\n" + 
+//				"	resideteID integer references Residente(residenteID),\n" + 
+//				"	nombre varchar(50),\n" + 
+//				"	correo varchar(60),\n" + 
+//				"	telefono varchar(20),\n" + 
+//				"	relacion varchar(20),\n" + 
+//				"	domicilio varchar(50)\n" + 
+//				")");
+//		}
+//		
+//		if(medicamento) {
+//		con.createStatement().execute("create table Medicamento (\n" + 
+//				"	id integer not null generated always as identity (start with 1, increment by 1) primary key,\n" + 
+//				"	resideteID integer references Residente(residenteID),\n" + 
+//				"	nombre varchar (50),\n" + 
+//				"	cantidad int,\n" + 
+//				"	dosis varchar(30),\n" + 
+//				"	vecesDia varchar(30),\n" + 
+//				"	tipo varchar(30)\n" + 
+//				")");
+//		}
 		
 		
 		

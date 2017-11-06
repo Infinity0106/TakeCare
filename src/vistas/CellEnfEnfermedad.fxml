@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.CellEnfEnfermedadController">
+   <children>
+      <Rectangle arcWidth="5.0" fill="WHITE" height="100.0" stroke="BLACK" strokeType="INSIDE" width="692.0" />
+      <AnchorPane>
+         <children>
+            <Label fx:id="tipo" alignment="TOP_LEFT" layoutX="14.0" layoutY="10.0" prefHeight="80.0" prefWidth="96.0" text="Tipo" wrapText="true">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="nombre" alignment="TOP_LEFT" layoutX="121.0" layoutY="10.0" prefHeight="80.0" prefWidth="118.0" text="Nombre" wrapText="true">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="fecha" alignment="TOP_LEFT" layoutX="250.0" layoutY="10.0" prefHeight="80.0" prefWidth="82.0" text="Fecha" wrapText="true">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="tratamiento" alignment="TOP_LEFT" layoutX="500.0" layoutY="10.0" prefHeight="80.0" prefWidth="179.0" text="Tratamiento o tipo" wrapText="true">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="sintomas" alignment="TOP_LEFT" layoutX="337.0" layoutY="10.0" prefHeight="80.0" prefWidth="151.0" text="Sintomas" wrapText="true">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

@@ -5,7 +5,7 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
-import view.createDB;
+import baseDeDatos.CrearBD;
 
 public class Main extends Application {
 	public static Stage primaryStage;
@@ -23,7 +23,7 @@ public class Main extends Application {
 			e.printStackTrace();
 		}
 		try {
-			createDB.main(null);
+			CrearBD.main(null);
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
