@@ -9,7 +9,6 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
-import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 
 import application.Main;
@@ -42,7 +41,6 @@ import modulos.Historial;
 import modulos.Hospital;
 import modulos.Operacion;
 import modulos.Residente;
-import view.enfermedadCellController;
 import controladores.CambiarEscena;
 
 public class AgregarResidenteController {
