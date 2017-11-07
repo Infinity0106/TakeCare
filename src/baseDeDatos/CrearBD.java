@@ -18,7 +18,8 @@ public class CrearBD {
 				medicamento=true,
 				historial=true,
 				servEme=true,
-				servHosp=true;
+				servHosp=true,
+				evento=true;
 		
 		Class.forName(DRIVER);
 		Connection con = DriverManager.getConnection(JDBC_URL);
@@ -32,6 +33,7 @@ public class CrearBD {
 				"     order by s.schemaname, t.tablename");
 		
 		while(res.next()) {
+			System.out.println(res.getString("NAME"));
 			if(res.getString("NAME").equals("SERVICIOHOSPITALARIO")) servHosp=false; 
 			if(res.getString("NAME").equals("DOMICILIO")) domicilio=false;
 			if(res.getString("NAME").equals("ENFERMEDAD")) enfermedades=false;
@@ -41,6 +43,7 @@ public class CrearBD {
 			if(res.getString("NAME").equals("OPERACION")) opreaciones=false;
 			if(res.getString("NAME").equals("RESIDENTE")) residente=false;
 			if(res.getString("NAME").equals("SERVICIOEMERGENCIA")) servEme=false;
+			if(res.getString("NAME").equals("EVENTO")) evento=false;
 		}
 		
 		if(domicilio)
@@ -137,6 +140,16 @@ public class CrearBD {
 					"	telefono varchar(50),\n" + 
 					"	foreign key (residenteID) references Residente(residenteID),\n" + 
 					"	foreign key (domicilioID) references Domicilio(domicilioID)\n" + 
+					")");
+		
+		if(evento)
+			con.createStatement().execute("create table Evento(\n" + 
+					"	eventoID integer not null generated always as identity (start with 1, increment by 1) primary key,\n" + 
+					"	residenteID integer,\n" + 
+					"	enfermera varchar(50),\n" + 
+					"	fecha date,\n" + 
+					"	descripcion varchar(250),\n" + 
+					"	foreign key (residenteID) references Residente(residenteID)\n" + 
 					")");
 		
 		

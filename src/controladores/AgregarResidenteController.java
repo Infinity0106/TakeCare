@@ -15,7 +15,11 @@ import com.jfoenix.controls.JFXTextField;
 import application.Main;
 import baseDeDatos.Domicilios;
 import baseDeDatos.Emergencias;
+import baseDeDatos.Enfermedades;
 import baseDeDatos.Familiares;
+import baseDeDatos.Historiales;
+import baseDeDatos.Hospitales;
+import baseDeDatos.Operaciones;
 import baseDeDatos.Residentes;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -230,33 +234,44 @@ public class AgregarResidenteController {
     			tmpRes.IDResidente=new Residentes().residenteInsert(tmpRes).IDResidente;
     			
     			tmpEme.IDEmergencia=new Emergencias().emergenciaInsert(tmpEme, tmpRes.IDResidente).IDEmergencia;
+    			
+    			tmpHos = new Hospital();
     			tmpHos.Nombre=servHospital.getText().toString();
     			tmpHos.Telefono=servTelefono.getText().toString();
+    			Domicilio tmpHostdir = new Domicilio();
+    			tmpHostdir.Calle = servHosCalle.getText().toString();
+    			tmpHostdir.Colonia = servHosCol.getText().toString();
+    			tmpHostdir.Pais = servHosPais.getText().toString();
+    			tmpHostdir.Municipio = servHosMun.getText().toString();
+    			tmpHostdir.Estado = servHosEst.getText().toString();
+    			tmpHostdir.IDDomicilio = new Domicilios().domicilioInsert(tmpHostdir).IDDomicilio;
+    			tmpHos.Direccion=tmpHostdir;
+    			tmpHos.IDHospital = new Hospitales().hospitalesInsert(tmpHos,tmpRes.IDResidente).IDHospital;
     			
-//    			Domicilio tmpHostdir = new Domicilio();
-//    			tmpHostdir.Calle = servHosCalle.getText().toString();
-//    			tmpHostdir
-//    			
-//    			servHosEst.getText().toString()
-//    			servHosCol.getText().toString()
-//    			servHosPais.getText().toString()
+    			
+    			
     			
     			if(tmpFam.size()>0) {
     				for(Familiar fam : tmpFam) {
     					fam.Residencia.IDDomicilio=new Domicilios().domicilioInsert(fam.Residencia).IDDomicilio;
     					fam.IDFamiliar=new Familiares().familiarInsert(fam, tmpRes.IDResidente).IDFamiliar;
-    					
     				}
     			}
     			
+    			tmpHis = new Historial();
+    			tmpHis.Enfermedades = tmpEnfermedades;
+    			tmpHis.Operaciones = tmpOperaciones;
+    			tmpHis.IDHistorial = new Historiales().hospitalInsert(tmpHis, tmpRes.IDResidente).IDHistorial;
+    			
+    			
     			if(tmpOperaciones.size()>0) {
     				for(Operacion op : tmpOperaciones) {
-
+    					op.IDOperacion= new Operaciones().operacionInsert(op,tmpHis.IDHistorial).IDOperacion;
     				}
     			}
     			if(tmpEnfermedades.size()>0) {
     				for(Enfermedad enf : tmpEnfermedades) {
-    					
+    					enf.IDEnfermedad=new Enfermedades().enfermedadInsert(enf,tmpHis.IDHistorial).IDEnfermedad;
     				}
     			}
     			

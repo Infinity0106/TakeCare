@@ -11,16 +11,20 @@ public class Emergencias extends AdministrarConecciones{
 		try {
 			String query="insert into APP.SERVICIOEMERGENCIA(residenteID, clave, telefono) values\n" + 
 					"	("+idRes+",'"+eme.Clave+"','"+eme.Telefono+"')";
+			System.out.print(query);
 			PreparedStatement preS = openConection().prepareStatement(query);
 			if(preS.executeUpdate()>0) {
 				query = "select servicioemeid from APP.SERVICIOEMERGENCIA\n" + 
 						"	where clave='"+eme.Clave+"' and telefono='"+eme.Telefono+"'";
+				System.out.print(query);
 				ResultSet resul = openConection().createStatement().executeQuery(query);
 				if(resul!=null) {
 					while(resul.next()) {
 						eme.IDEmergencia=(Integer) new Integer(resul.getString("servicioemeid").toString());
 					}
 				}
+			}else {
+				eme.IDEmergencia=-1;
 			}
 			
 		} catch (SQLException e) {

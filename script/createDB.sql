@@ -182,14 +182,18 @@ drop table ADMIN.OPERACION;
 drop table ADMIN.HISTORIAL;
 drop table ADMIN.SERVICIOEMERGENCIA;
 drop table ADMIN.SERVICIOHOSPITALARIO;
-drop table ADMIN.DOMICILIO;
 drop table ADMIN.FAMILIAR;
+drop table ADMIN.DOMICILIO;
+drop table ADMIN.EVENTO;
+drop table ADMIN.RESIDENTE;
+
+
 drop table ADMIN.RESIDENTE;
 
 select s.schemaname || '.' || t.tablename  
      from sys.systables t, sys.sysschemas s  
      where t.schemaid = s.schemaid 
-          and t.tabletype = 'T' 
+          and t.tabletype = 'T'
      order by s.schemaname, t.tablename;
 
 select t.tablename  as name
@@ -219,7 +223,7 @@ select t.tablename  as name
 
 
 	insert into APP.DOMICILIO(calle, colonia, estado, municipio, pais) values
-	('Av.dest','Tec','mtu','nl','mxn');
+	('Av.tec','Tec','mtu','nl','mxn');
 	select * from APP.Domicilio;
 	
 	select domicilioid from app.domicilio
@@ -230,7 +234,7 @@ select t.tablename  as name
 	select * from app.familiar
 	
 	select familiarid from app.familiar
-	where nombre='pepe' and corre='papa' and telefono=''
+	where nombre='pepe' and correo='papa' and telefono=''
 	
 	
 	insert into APP.SERVICIOEMERGENCIA(residenteID, clave, telefono) values
@@ -238,13 +242,25 @@ select t.tablename  as name
 	select servicioemeid from APP.SERVICIOEMERGENCIA
 	where clave='' and telefono=''
 	
+	insert into app.serviciohospitalario(residenteID, domicilioID, nombre, telefono) values
+	(1,2,'hos1','98723')
+	select * from app.serviciohospitalario
+	where nombre='hos1' and telefono='98723'
+	
+	insert into APP.HISTORIAL(residenteID) values
+	(1);
+	select historialID from APP.HISTORIAL
+	where residenteID=1
+	
 	insert into APP.OPERACION(historialID,nombre,fecha,tipo) values
-	(int,str,str,str);
-	select
+	(1,'op1','1996-01-06','op');
+	select operacionID from APP.OPERACION
+	where nombre='op1' and fecha='1996-01-06';
 	
 	insert into APP.ENFERMEDAD(historialID,nombre,fecha,sintomas,tratamiento) values
-	(int,str,str,str,str);
-	select
+	(1,'en1','1997-01-06','sintomas','trata');
+	select enfermedadid from APP.ENFERMEDAD
+	where nombre='en1' and fecha='1997-01-06';
 	
 
 
