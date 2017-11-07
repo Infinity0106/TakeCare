@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public class CrearBD {
 	private static final String DRIVER = "org.apache.derby.jdbc.EmbeddedDriver";
-	private static final String JDBC_URL ="jdbc:derby:/Users/infinity0106/eclipse-workspace/takeCareDB;create=true";
+	private static final String JDBC_URL ="jdbc:derby:C:\\Users\\Joel\\TakeCareDB;create=true";
 	
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		boolean residente=true,

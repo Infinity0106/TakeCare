@@ -165,6 +165,10 @@ drop table APP.SERVICIOHOSPITALARIO;
 drop table APP.DOMICILIO;
 drop table APP.FAMILIAR;
 drop table APP.RESIDENTE;
+drop table APP.ALERGIAS;
+drop table APP.ENFERMEDADES;
+drop table APP.OPERACIONES;
+drop table APP.RESIDENTE;
 
 drop table ADMIN.MEDICAMENTO;
 drop table ADMIN.ENFERMEDAD;
@@ -196,7 +200,7 @@ select t.tablename  as name
 
 
 	insert into APP.RESIDENTE (nombre,fechanacimiento,sexo,estatus,fotourl,lugar,cama) values
-     ('bernardo orozco','1996-06-01','M','Activo','/Users/infinity0106/Pictures/13923736.jpeg',1,1);    
+     ('bernardo orozco','1996-06-01','M','Activo','C:\Users\Joel\Pictures\13923736.jpeg',1,1);    
 	select residenteID, nombre, fotoUrl from app.residente;
      
      insert into APP.MEDICAMENTO (RESIDENTEID, NOMBRE, FECHAVENCIMIENTO, PRESENTACION, CANTIDAD, POSOLOGIA, VECESDIA, USOTERAPEUTICO) values
