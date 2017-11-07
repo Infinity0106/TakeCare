@@ -101,7 +101,12 @@ public class SubministrarMedicamentoController {
     
     @FXML
     void selResidenteAction(ActionEvent event) {
-    		
+    	for(Residente res : Residentes) {
+			if(res.Nombre.equals(selResidente.getValue().getText().toString())) {
+				resSeleccionado=res;
+			}
+		}
+		selFotoRes.setImage(new Image(new File(resSeleccionado.FotoUrl.toString()).toURI().toString()));
     }
     
     void renderMedTable() {

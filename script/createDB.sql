@@ -262,5 +262,9 @@ select t.tablename  as name
 	select enfermedadid from APP.ENFERMEDAD
 	where nombre='en1' and fecha='1997-01-06';
 	
+	insert into APP.Evento(residenteID, enfermera, fecha, descripcion) values
+	(1,'','','');
+	select eventoID from APP.EVENTO
+	where residenteID= and enfermera='' and fecha=''
 
 
