@@ -5,4 +5,5 @@ public class Enfermedad {
 	public String Fecha;
 	public String Sintomas;
 	public String Tratamiento;
+	public int IDEnfermedad;
 }

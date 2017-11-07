@@ -20,7 +20,7 @@ public class Medicamentos extends AdministrarConecciones {
 		try {
 			String query ="insert into APP.MEDICAMENTO (RESIDENTEID, NOMBRE, FECHAVENCIMIENTO, PRESENTACION, CANTIDAD, POSOLOGIA, VECESDIA) values"
 					+ "("+id+",'"+nom+"','"+fe+"','"+pre+"',"+cant+",'"+pos+"','"+vec+"')";
-			
+			System.out.println(query);
 			PreparedStatement preS = openConection().prepareStatement(query);
 			
 			value=(preS.executeUpdate()>0?true:false);

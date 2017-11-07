@@ -36,11 +36,13 @@ public class Residentes extends AdministrarConecciones {
 	public Residente residenteInsert(Residente res) {
 		try {
 			String query = "insert into APP.RESIDENTE (nombre,fechanacimiento,sexo,estatus,fotourl,lugar,cama) values\n" + 
-					"     ('"+res.Nombre+"','"+res.FechaNacimiento+"','"+res.Sexo+"','Activo','"+res.FotoUrl+"',"+res.Lugar+","+res.Cama+");";
+					"     ('"+res.Nombre+"','"+res.FechaNacimiento+"','"+res.Sexo+"','Activo','"+res.FotoUrl+"',"+res.Lugar+","+res.Cama+")";
+			System.out.print(query);
 			PreparedStatement preS = openConection().prepareStatement(query);
 			if(preS.executeUpdate()>0) {
 				query = "select residenteID from app.residente\n" + 
 						"	where nombre='"+res.Nombre+"' and fotoUrl='"+res.FotoUrl+"'";
+				System.out.print(query);
 				ResultSet resul = openConection().createStatement().executeQuery(query);
 				if(resul!=null) {
 					while(resul.next()) {
@@ -50,7 +52,7 @@ public class Residentes extends AdministrarConecciones {
 			}else {
 				res.IDResidente=-1;
 			}
-			
+		
 		}catch(SQLException e) {
 			e.printStackTrace();
 			res.IDResidente=-1;
