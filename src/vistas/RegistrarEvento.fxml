@@ -69,7 +69,7 @@
                         <Font size="25.0" />
                      </font>
                   </Label>
-                  <Label layoutX="36.0" layoutY="255.0" text="Nombre">
+                  <Label layoutX="36.0" layoutY="255.0" text="Enfermera">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -84,29 +84,13 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <JFXDatePicker fx:id="eveFecha" defaultColor="BLACK" layoutX="397.0" layoutY="276.0" prefHeight="27.0" prefWidth="168.0" />
+                  <JFXDatePicker fx:id="eveFecha" defaultColor="BLACK" layoutX="397.0" layoutY="276.0" prefHeight="27.0" prefWidth="344.0" />
                   <Label layoutX="36.0" layoutY="313.0" text="Descripcion">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <JFXTextArea fx:id="eveDesc" layoutX="37.0" layoutY="329.0" prefHeight="79.0" prefWidth="332.0" />
-                  <Label layoutX="395.0" layoutY="312.0" text="Personas involucradas">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <JFXTextArea fx:id="eveInvo" layoutX="396.0" layoutY="329.0" prefHeight="79.0" prefWidth="347.0" />
-                  <Label layoutX="574.0" layoutY="254.0" text="Nombre de responsable">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <JFXTextField fx:id="eveRespo" focusColor="BLACK" layoutX="570.0" layoutY="274.0" prefHeight="29.0" prefWidth="175.0">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </JFXTextField>
+                  <JFXTextArea fx:id="eveDesc" layoutX="37.0" layoutY="329.0" prefHeight="79.0" prefWidth="695.0" />
                </children>
             </AnchorPane>
          </content>

@@ -14,6 +14,7 @@ import com.jfoenix.controls.JFXTextField;
 
 import application.Main;
 import baseDeDatos.Domicilios;
+import baseDeDatos.Emergencias;
 import baseDeDatos.Familiares;
 import baseDeDatos.Residentes;
 import javafx.event.ActionEvent;
@@ -34,6 +35,7 @@ import modulos.Emergencia;
 import modulos.Enfermedad;
 import modulos.Familiar;
 import modulos.Historial;
+import modulos.Hospital;
 import modulos.Operacion;
 import modulos.Residente;
 import view.enfermedadCellController;
@@ -171,6 +173,8 @@ public class AgregarResidenteController {
     
     private Residente tmpRes;
     
+    private Hospital tmpHos;
+    
     private ArrayList<Operacion> tmpOperaciones = new ArrayList<Operacion>();
     
     private ArrayList<Enfermedad> tmpEnfermedades = new ArrayList<Enfermedad>();
@@ -210,6 +214,7 @@ public class AgregarResidenteController {
     			tmpEme.Clave=servCodigo.getText().toString();
     			tmpEme.Telefono=servTelefono.getText().toString();
     			
+    			
     			tmpRes = new Residente();
     			tmpRes.Nombre = infNombre.getText().toString();
     			tmpRes.Estatus = "Activo";
@@ -218,12 +223,23 @@ public class AgregarResidenteController {
     			tmpRes.Lugar = (Integer) new Integer(infLugar.getText().toString());
     			tmpRes.Cama = (Integer) new Integer(infCama.getText().toString());
     			tmpRes.Sexo = (infSex.getValue().toString().equals("Mujer")?'M':'H');
-    			tmpRes.EmergenciaMedica = tmpEme;
-    			tmpRes.HistorialEstadia = tmpHis;
+    			
     			tmpRes.Familiares = tmpFam;
     			
     			tmpRes.IDResidente=-1;
     			tmpRes.IDResidente=new Residentes().residenteInsert(tmpRes).IDResidente;
+    			
+    			tmpEme.IDEmergencia=new Emergencias().emergenciaInsert(tmpEme, tmpRes.IDResidente).IDEmergencia;
+    			tmpHos.Nombre=servHospital.getText().toString();
+    			tmpHos.Telefono=servTelefono.getText().toString();
+    			
+//    			Domicilio tmpHostdir = new Domicilio();
+//    			tmpHostdir.Calle = servHosCalle.getText().toString();
+//    			tmpHostdir
+//    			
+//    			servHosEst.getText().toString()
+//    			servHosCol.getText().toString()
+//    			servHosPais.getText().toString()
     			
     			if(tmpFam.size()>0) {
     				for(Familiar fam : tmpFam) {
@@ -232,14 +248,21 @@ public class AgregarResidenteController {
     					
     				}
     			}
+    			
     			if(tmpOperaciones.size()>0) {
-    				
+    				for(Operacion op : tmpOperaciones) {
+
+    				}
     			}
     			if(tmpEnfermedades.size()>0) {
-    				
+    				for(Enfermedad enf : tmpEnfermedades) {
+    					
+    				}
     			}
     			
     			
+    			tmpRes.EmergenciaMedica = tmpEme;
+    			tmpRes.HistorialEstadia = tmpHis;
     			
     			if(tmpRes.IDResidente!=-1) {
     				dialogParent = new JFXDialog(rootStack,dialogLayout,JFXDialog.DialogTransition.CENTER,true);

@@ -31,11 +31,6 @@ public class RegistrarEventoController {
     @FXML
     private JFXTextArea eveDesc;
 
-    @FXML
-    private JFXTextArea eveInvo;
-
-    @FXML
-    private JFXTextField eveRespo;
 
     @FXML
     void btnAgrearEventoAction(ActionEvent event) {
@@ -71,10 +66,17 @@ public class RegistrarEventoController {
     		adminNav.loadSubministrarMedicamento();
     		this.killObjects();
     }
-
+    
     @FXML
-    void selBtnResAction(ActionEvent event) {
-
+    void navInvMedAction(ActionEvent event) {
+    		//TODO
+    		this.killObjects();
+    }
+    
+    @FXML
+    void navRecMedAction(ActionEvent event) {
+    		//TODO
+    		this.killObjects();
     }
 
     @FXML

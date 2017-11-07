@@ -218,5 +218,23 @@ select t.tablename  as name
 	insert into APP.FAMILIAR (residenteID, nombre, correo, telefono, domicilioID) values
 	(1,'pepe','papa@pepe.com','8661231234', 1)
 	select * from app.familiar
+	
+	select familiarid from app.familiar
+	where nombre='pepe' and corre='papa' and telefono=''
+	
+	
+	insert into APP.SERVICIOEMERGENCIA(residenteID, clave, telefono) values
+	(1,'eme-123123','8667321234');
+	select servicioemeid from APP.SERVICIOEMERGENCIA
+	where clave='' and telefono=''
+	
+	insert into APP.OPERACION(historialID,nombre,fecha,tipo) values
+	(int,str,str,str);
+	select
+	
+	insert into APP.ENFERMEDAD(historialID,nombre,fecha,sintomas,tratamiento) values
+	(int,str,str,str,str);
+	select
+	
 
 
