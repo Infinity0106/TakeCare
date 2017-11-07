@@ -22,17 +22,20 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label fx:id="dosis" alignment="TOP_LEFT" layoutX="405.0" layoutY="10.0" prefHeight="80.0" prefWidth="118.0" text="Dosis" wrapText="true">
+            <JFXButton buttonType="RAISED" layoutX="625.0" layoutY="10.0" onAction="#btnLAddMedAction" prefHeight="80.0" prefWidth="59.0" style="-fx-background-color: #d8d8d8;" text="+">
+               <font>
+                  <Font size="24.0" />
+               </font></JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="471.0" layoutY="10.0" onAction="#btnSubMedAction" prefHeight="80.0" prefWidth="59.0" style="-fx-background-color: #d8d8d8;" text="-">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </JFXButton>
+            <Label fx:id="nombre1" alignment="TOP_LEFT" layoutX="538.0" layoutY="10.0" prefHeight="80.0" prefWidth="78.0" text="Cantidad" wrapText="true">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label fx:id="horario" alignment="TOP_LEFT" layoutX="523.0" layoutY="10.0" prefHeight="80.0" prefWidth="94.0" text="Horario" wrapText="true">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <JFXButton buttonType="RAISED" layoutX="629.0" layoutY="12.0" onAction="#btnListoAction" prefHeight="80.0" prefWidth="59.0" style="-fx-background-color: #d8d8d8;" text="Listo" />
          </children>
       </AnchorPane>
    </children>

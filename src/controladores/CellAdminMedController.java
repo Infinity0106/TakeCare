@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
 public class CellAdminMedController {
-	
+
     @FXML
     private Label nombre;
 
@@ -13,20 +13,17 @@ public class CellAdminMedController {
     private Label medicamento;
 
     @FXML
-    private Label dosis;
+    private Label nombre1;
 
     @FXML
-    private Label horario;
+    void btnLAddMedAction(ActionEvent event) {
+
+    }
 
     @FXML
-    void btnListoAction(ActionEvent event) {
+    void btnSubMedAction(ActionEvent event) {
 
     }
-    
-    public void setValue(String nom, String med, String dos, String hor) {
-    		nombre.setText(nom);
-    		medicamento.setText(med);
-    		dosis.setText(dos);
-    		horario.setText(hor);
-    }
+
 }
+
