@@ -9,12 +9,14 @@ import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 
+import baseDeDatos.Eventos;
 import baseDeDatos.Residentes;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import modulos.Evento;
 import modulos.Residente;
 import controladores.CambiarEscena;
 
@@ -38,11 +40,12 @@ public class RegistrarEventoController {
     private JFXTextArea eveDesc;
     
     private ArrayList<Residente> Residentes;
-    private Residente resSeleccionado;
+    private Evento eventoLocal;
+    
 
 
     @FXML
-    void btnAgrearEventoAction(ActionEvent event) {
+    void btnAgrearEventoAction(ActionEvent event) throws ClassNotFoundException, SQLException {
     	// Residente al que se le aplicará el evento
     	String residenteSeleccionado = (String)selResidente.getValue().getText();
 
@@ -58,7 +61,14 @@ public class RegistrarEventoController {
     	
     	// Generar objeto residente
     	// TODO
-    	// Generar objeto y mandar a insert
+    	eventoLocal = new Evento();
+    	eventoLocal.residenteID = idResidenteSeleccionado;
+    	eventoLocal.enfermera = eveNombre.getText();
+    	eventoLocal.fecha = eveFecha.getValue().toString();
+    	eventoLocal.descripcion = eveDesc.getText();
+    	
+    	Eventos eventosLokos = new Eventos();
+    	eventoLocal = eventosLokos.EventosInsertNombre(eventoLocal);
     }
 
     @FXML
@@ -112,7 +122,6 @@ public class RegistrarEventoController {
     		}
     		selResidente.getSelectionModel().select(0);
     		selFotoRes.setImage(new Image(new File(Residentes.get(0).FotoUrl.toString()).toURI().toString()));
-    		resSeleccionado = Residentes.get(0);
     	} catch (SQLException e) {
     		e.printStackTrace();
     	} catch (ClassNotFoundException e) {
