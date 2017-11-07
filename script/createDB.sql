@@ -156,14 +156,24 @@ create table Medicamento(
 	foreign key (residenteID) references Residente(residenteID)
 );
 
+create table Evento(
+	eventoID integer not null generated always as identity (start with 1, increment by 1) primary key,
+	residenteID integer,
+	enfermera varchar(50),
+	fecha date,
+	descripcion varchar(250),
+	foreign key (residenteID) references Residente(residenteID)
+);
+
 drop table APP.MEDICAMENTO;
 drop table APP.ENFERMEDAD;
 drop table APP.OPERACION;
 drop table APP.HISTORIAL;
 drop table APP.SERVICIOEMERGENCIA;
 drop table APP.SERVICIOHOSPITALARIO;
-drop table APP.DOMICILIO;
 drop table APP.FAMILIAR;
+drop table APP.DOMICILIO;
+drop table APP.EVENTO;
 drop table APP.RESIDENTE;
 
 drop table ADMIN.MEDICAMENTO;
