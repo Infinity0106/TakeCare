@@ -174,8 +174,8 @@ public class AgregarMedicamentoController {
 	    	} catch (SQLException e) {
 	    		e.printStackTrace();
 	    	} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
+	    		e.printStackTrace();
+	    	}	
 	    	
 	    	addMedPresentacion.getItems().add(new Label("tabletas"));
 	    	addMedPresentacion.getItems().add(new Label("gotas"));
