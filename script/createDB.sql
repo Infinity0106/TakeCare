@@ -289,6 +289,21 @@ select t.tablename  as name
 	select * from APP.ENFERMEDAD where historialid=1
 	select * from APP.EVENTO where residenteid=1
 	
+	(nombre,fechanacimiento,sexo,estatus,fotourl,lugar,cama)
+	update APP.RESIDENTE set 
+	nombre='', fechanacimiento='',sexo='',estatus='',fotourl='',lugar=,cama=
+	where residenteID=1
 	
+	
+	update APP.SERVICIOHOSPITALARIO set
+	nombre='',telefono=''
+	where servicioHospID=
+	
+	update app.Domicilio set
+	calle='', colonia='', estado='', municipio='', pais=''
+	where domicilioID=
 
+	update APP.SERVICIOEMERGENCIA set
+	clave='', telefono=''
+	where servicioEmeID=
 

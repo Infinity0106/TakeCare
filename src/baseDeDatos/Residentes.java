@@ -63,8 +63,34 @@ public class Residentes extends AdministrarConecciones {
 		return value;
 	}
 
-	public void residenteUpdate() {
+	public Boolean residenteUpdate(Residente res) {
+		Boolean respu=false;
+		try {
+			String query = "update APP.RESIDENTE set \n" + 
+					"	nombre='"+res.Nombre+"', fechanacimiento='"+res.FechaNacimiento+"',sexo='"+res.Sexo+"',estatus='"+res.Estatus+"',fotourl='"+res.FotoUrl+"',lugar="+res.Lugar+",cama="+res.Cama+"\n" + 
+					"	where residenteID="+res.IDResidente;
+			System.out.print(query);
+			PreparedStatement preS = openConection().prepareStatement(query);
+			if(!(preS.executeUpdate()>0)) {
+				respu=false;
+			}else {
+				respu=true;
+			}
+			if(!new Emergencias().emergenciasUpdate(res.EmergenciaMedica)) {
+				respu=false;
+			}
+			if(!new Hospitales().hospitalesUpdate(res.ServicioHospital)) {
+				respu=false;
+			}
 		
+		}catch(SQLException e) {
+			e.printStackTrace();
+			respu=false;
+		}catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			respu=false;
+		}
+		return respu;
 	}
 	
 	public ArrayList<Residente> residentesRecordatorio(String fecha, String dosis) {

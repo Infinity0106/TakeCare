@@ -16,8 +16,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
-<StackPane fx:id="rootStack" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane fx:id="rootStack" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.VerResidenteController">
    <children>
       <AnchorPane prefHeight="768.0" prefWidth="1024.0">
          <children>
@@ -307,7 +306,47 @@
       </AnchorPane>
       <JFXDialog fx:id="dialogParent">
          <children>
-            <JFXDialogLayout fx:id="dialogLayour" />
+            <JFXDialogLayout fx:id="dialogLayout">
+               <children>
+                  <StackPane fx:id="errorStack" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+                     <children>
+                        <Rectangle arcWidth="5.0" fill="WHITE" height="290.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="364.0" />
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="50.0" layoutY="213.0" text="Faltan datos por llenar">
+                                 <font>
+                                    <Font size="25.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="112.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../lib/error.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </StackPane>
+                  <StackPane fx:id="succesStack" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+                     <children>
+                        <Rectangle arcWidth="5.0" fill="WHITE" height="290.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="364.0" />
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="25.0" layoutY="211.0" text="Datos cambiados con exito">
+                                 <font>
+                                    <Font size="25.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="112.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../lib/success.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </StackPane>
+               </children></JFXDialogLayout>
          </children>
       </JFXDialog>
    </children>

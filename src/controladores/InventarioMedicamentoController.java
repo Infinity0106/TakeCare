@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import baseDeDatos.Medicamentos;
 import baseDeDatos.Residentes;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,6 +20,15 @@ public class InventarioMedicamentoController {
     private ArrayList<Residente> arrResidente = new ArrayList<Residente>();
     
     private CambiarEscena adminNav = new CambiarEscena();
+    
+    @FXML
+    void modPastillero(ActionEvent event) {
+    		if(new Medicamentos().restarValores()) {
+    			
+    		}else {
+    			
+    		}
+    }
 
     @FXML
     void navAddMedAction(ActionEvent event) {
@@ -72,7 +82,6 @@ public class InventarioMedicamentoController {
 	    	try {
 			arrResidente = new Residentes().residenteInventario();
 			scrollRes.getChildren().clear();
-			for(int i=0;i<10;i++) {
 		    	for(Residente Res: arrResidente) {
 		    		try {
 		    			FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/CellInventario.fxml"));
@@ -87,7 +96,6 @@ public class InventarioMedicamentoController {
 		    		}
 		    		index+=1;
 		    	}
-			}
 		} catch (ClassNotFoundException e1) {
 			e1.printStackTrace();
 		} catch (SQLException e1) {

@@ -10,6 +10,8 @@ import java.util.List;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXDialog;
+import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 
@@ -143,6 +145,21 @@ public class VerResidenteController {
     @FXML
     private AnchorPane scrollEventos;
     
+    @FXML
+    private StackPane rootStack;
+    
+    @FXML
+    private JFXDialog dialogParent;
+
+    @FXML
+    private JFXDialogLayout dialogLayout;
+    
+    @FXML
+    private StackPane errorStack;
+    
+    @FXML
+    private StackPane succesStack;
+    
     private ArrayList<modulos.Residente> Residentes = new ArrayList<modulos.Residente>();
     
     private modulos.Residente resSeleccionado = new modulos.Residente();
@@ -153,7 +170,53 @@ public class VerResidenteController {
 
     @FXML
     void modResidenteAction(ActionEvent event) {
-    		
+    		if(infNombre.getText().toString()!=null&&!infNombre.getText().toString().equals("")&&
+    			infFecha.getValue().toString()!=null&&!infFecha.getValue().toString().equals("")&&
+    			infLugar.getText().toString()!=null&&!infLugar.getText().toString().equals("")&&
+    			infCama.getText().toString()!=null&&!infCama.getText().toString().equals("")&&
+    			infSex.getValue()!=null&&!infSex.getValue().toString().equals("")&&
+    			imageURL!=null&&!imageURL.equals("")&&
+    			servCodigo.getText().toString()!=null&&!servCodigo.getText().toString().equals("")&&
+    			servTelefono.getText().toString()!=null&&!servTelefono.getText().toString().equals("")&&
+    			servHospital.getText().toString()!=null&&!servHospital.getText().toString().equals("")&&
+    			servHospTel.getText().toString()!=null&&!servHospTel.getText().toString().equals("")&&
+    			servHosMun.getText().toString()!=null&&!servHosMun.getText().toString().equals("")&&
+    			servHosEstado.getText().toString()!=null&&!servHosEstado.getText().toString().equals("")&&
+    			serHosDireccion.getText().toString()!=null&&!serHosDireccion.getText().toString().equals("")) {
+    			
+    			resSeleccionado.Nombre=infNombre.getText().toString();
+    			resSeleccionado.FechaNacimiento=infFecha.getValue().toString();
+    			resSeleccionado.Lugar=(Integer) new Integer(infLugar.getText().toString());
+    			resSeleccionado.Cama=(Integer) new Integer(infCama.getText().toString());
+    			resSeleccionado.Sexo=(infSex.getValue().getText().toString().equals("Mujer")?'M':'H');
+    			resSeleccionado.FotoUrl=imageURL;
+    			resSeleccionado.EmergenciaMedica.Clave=servCodigo.getText().toString();
+    			resSeleccionado.EmergenciaMedica.Telefono=servTelefono.getText().toString();
+    			resSeleccionado.ServicioHospital.Nombre=servHospital.getText().toString();
+    			resSeleccionado.ServicioHospital.Telefono=servHospTel.getText().toString();
+    			resSeleccionado.ServicioHospital.Direccion.Municipio=servHosMun.getText().toString();
+    			resSeleccionado.ServicioHospital.Direccion.Estado=servHosEstado.getText().toString();
+    			resSeleccionado.ServicioHospital.Direccion.Calle=serHosDireccion.getText().toString();
+    			
+    			if(new Residentes().residenteUpdate(resSeleccionado)) {
+    				dialogParent = new JFXDialog(rootStack,dialogLayout,JFXDialog.DialogTransition.CENTER,true);
+    				succesStack.setVisible(true);
+    				errorStack.setVisible(false);
+    				dialogParent.show();
+    			}else{
+    				dialogParent = new JFXDialog(rootStack,dialogLayout,JFXDialog.DialogTransition.CENTER,true);
+    				succesStack.setVisible(false);
+    				errorStack.setVisible(true);
+    				dialogParent.show();
+    			}
+    			System.out.println("holso");
+    			
+    		}else {
+    			dialogParent = new JFXDialog(rootStack,dialogLayout,JFXDialog.DialogTransition.CENTER,true);
+    				succesStack.setVisible(false);
+				errorStack.setVisible(true);
+    	    	    	dialogParent.show();
+    		}
     }
 
     @FXML
@@ -221,6 +284,7 @@ public class VerResidenteController {
 	    		selResNombre.getSelectionModel().select(0);
 	    		selResFoto.setImage(new Image(new File(Residentes.get(0).FotoUrl.toString()).toURI().toString()));
 	    		infFoto.setImage(new Image(new File(Residentes.get(0).FotoUrl.toString()).toURI().toString()));
+	    		imageURL=Residentes.get(0).FotoUrl.toString();
 	    		resSeleccionado = Residentes.get(0);
 	    		System.out.println(Residentes.get(0).IDResidente);
 			resSeleccionado=new Residentes().residenteSelect(Residentes.get(0).IDResidente);
@@ -250,6 +314,7 @@ public class VerResidenteController {
     			}
     		}
     		this.setValues();
+    		imageURL=resSeleccionado.FotoUrl.toString();
     		selResFoto.setImage(new Image(new File(resSeleccionado.FotoUrl.toString()).toURI().toString()));
     		infFoto.setImage(new Image(new File(resSeleccionado.FotoUrl.toString()).toURI().toString()));
     }
