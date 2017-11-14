@@ -96,6 +96,7 @@ create table Familiar(
 	nombre varchar(50),
 	correo varchar(50),
 	telefono varchar(20),
+	relacion varchar(20),
 	domicilioID integer,
 	foreign key (residenteID) references Residente(residenteID),
 	foreign key (domicilioID) references Domicilio(domicilioID)
@@ -229,8 +230,8 @@ select t.tablename  as name
 	select domicilioid from app.domicilio
 	where calle='Av.dest' and colonia='Tec';
 
-	insert into APP.FAMILIAR (residenteID, nombre, correo, telefono, domicilioID) values
-	(1,'pepe','papa@pepe.com','8661231234', 1)
+	insert into APP.FAMILIAR (residenteID, nombre, correo, telefono, relacion, domicilioID) values
+	(1,'pepe','papa@pepe.com','8661231234','amigo', 1)
 	select * from app.familiar
 	
 	select familiarid from app.familiar
@@ -266,5 +267,28 @@ select t.tablename  as name
 	(1,'','','');
 	select eventoID from APP.EVENTO
 	where residenteID= and enfermera='' and fecha=''
+	
+	
+	update APP.MEDICAMENTO set
+	cantidad=cantidad+1
+	where medicamentoid=1 and residenteID=1
+	
+	
+	select APP.RESIDENTE.nombre, APP.MEDICAMENTO.nombre as nombremed, APP.MEDICAMENTO.vecesDia, APP.MEDICAMENTO.posologia
+	from APP.RESIDENTE join APP.MEDICAMENTO on APP.RESIDENTE.residenteID = APP.MEDICAMENTO.residenteID
+	order by APP.RESIDENTE.nombre;
+	
+	
+	select * from app.residente where residenteid=1
+	select * from APP.SERVICIOEMERGENCIA where residenteid=1
+	select * from APP.SERVICIOHOSPITALARIO where residenteid=1
+	select * from APP.DOMICILIO where domicilioid=1
+	select * from APP.FAMILIAR where residenteid=1
+	select * from APP.HISTORIAL  where residenteid=1
+	select * from APP.OPERACION where historialid=1
+	select * from APP.ENFERMEDAD where historialid=1
+	select * from APP.EVENTO where residenteid=1
+	
+	
 
 

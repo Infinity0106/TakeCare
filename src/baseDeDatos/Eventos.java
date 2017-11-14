@@ -3,6 +3,7 @@ package baseDeDatos;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import modulos.Evento;
 
@@ -34,6 +35,31 @@ public class Eventos extends AdministrarConecciones{
 			e.printStackTrace();
 			tmp.IDEvento=-1;
 		}
+		return tmp;
+	}
+	
+	public ArrayList<Evento> eventosSelect(int id){
+		ArrayList<Evento> tmp = new ArrayList<Evento>();
+		ResultSet res;
+		try {
+			res = openConection().createStatement().executeQuery("select * from APP.EVENTO where residenteid="+id);
+			if(res!=null) {
+				while(res.next()) {
+					Evento tmpe = new Evento();
+					tmpe.enfermera=res.getString("enfermera").toString();
+					tmpe.fecha=res.getString("FECHA").toString();
+					tmpe.descripcion=res.getString("descripcion").toString();
+					tmpe.IDEvento=(Integer) new Integer(res.getString("eventoID").toString());
+					tmp.add(tmpe);
+				}
+				
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		return tmp;
 	}
 }

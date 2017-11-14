@@ -66,4 +66,28 @@ public class CambiarEscena {
 	    		e.printStackTrace();
 	    	}
 	}
+	
+	public void loadInvMed() {
+		try {
+	    		Parent root = FXMLLoader.load(getClass().getResource("/vistas/InventarioMedicamento.fxml"));
+	    		Scene scene = new Scene(root);
+	    		Main.primaryStage.setScene(scene);
+	    		Main.primaryStage.setResizable(false);
+	    		Main.primaryStage.show();
+	    	}catch (Exception e) {
+	    		e.printStackTrace();
+	    	}
+	}
+	
+	public void loadRecMed() {
+		try {
+	    		Parent root = FXMLLoader.load(getClass().getResource("/vistas/RecordatorioMedicamento.fxml"));
+	    		Scene scene = new Scene(root);
+	    		Main.primaryStage.setScene(scene);
+	    		Main.primaryStage.setResizable(false);
+	    		Main.primaryStage.show();
+	    	}catch (Exception e) {
+	    		e.printStackTrace();
+	    	}
+	}
 }
