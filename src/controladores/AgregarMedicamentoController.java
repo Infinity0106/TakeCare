@@ -151,13 +151,13 @@ public class AgregarMedicamentoController {
     
     @FXML
     void navInvMedAction(ActionEvent event) {
-    		//TODO
+    		adminNav.loadInvMed();
     		this.killObjects();
     }
     
     @FXML
     void navRecMedAction(ActionEvent event) {
-    		//TODO
+    		adminNav.loadRecMed();
     		this.killObjects();
     }
 

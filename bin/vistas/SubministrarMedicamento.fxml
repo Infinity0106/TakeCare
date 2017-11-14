@@ -2,95 +2,141 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDialog?>
+<?import com.jfoenix.controls.JFXDialogLayout?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.SubministrarMedicamentoController">
+<StackPane fx:id="rootStack" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.SubministrarMedicamentoController">
    <children>
-      <Rectangle arcWidth="5.0" fill="#434343" height="772.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
-      <Label layoutX="212.0" layoutY="12.0" text="SUBMINISTRAR MEDICAMENTO">
-         <font>
-            <Font size="32.0" />
-         </font>
-      </Label>
-      <Line endX="345.0" layoutX="337.0" layoutY="51.0" startX="-127.0" />
-      <ScrollPane hbarPolicy="NEVER" layoutX="213.0" layoutY="66.0" prefHeight="687.0" prefWidth="792.0">
-         <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="681.0" prefWidth="792.0" style="-fx-background-color: white;">
+      <AnchorPane prefHeight="768.0" prefWidth="1024.0">
+         <children>
+            <Rectangle arcWidth="5.0" fill="#434343" height="772.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
+            <Label layoutX="212.0" layoutY="12.0" text="SUBMINISTRAR MEDICAMENTO">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Label>
+            <Line endX="345.0" layoutX="337.0" layoutY="51.0" startX="-127.0" />
+            <ScrollPane hbarPolicy="NEVER" layoutX="213.0" layoutY="66.0" prefHeight="687.0" prefWidth="792.0">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="681.0" prefWidth="792.0" style="-fx-background-color: white;">
+                     <children>
+                        <Rectangle arcWidth="5.0" fill="WHITE" height="214.0" layoutX="12.0" layoutY="12.0" stroke="#00000059" strokeType="INSIDE" width="756.0" />
+                        <Rectangle arcWidth="5.0" fill="WHITE" height="29.0" layoutX="28.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="251.0" />
+                        <Rectangle arcWidth="5.0" fill="WHITE" height="412.0" layoutX="12.0" layoutY="255.0" stroke="#00000059" strokeType="INSIDE" width="756.0" />
+                        <Rectangle arcWidth="5.0" fill="WHITE" height="29.0" layoutX="28.0" layoutY="243.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="168.0" />
+                        <Rectangle arcWidth="5.0" fill="#979797" height="44.0" layoutX="28.0" layoutY="276.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="704.0" />
+                        <Label layoutX="41.0" layoutY="240.0" text="Administrar">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="50.0" layoutY="288.0" text="Nombre">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="422.0" layoutY="288.0" text="Cantidad">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="251.0" layoutY="288.0" text="Medicamento">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <ScrollPane hbarPolicy="NEVER" layoutX="28.0" layoutY="320.0" prefHeight="330.0" prefWidth="704.0">
+                           <content>
+                              <AnchorPane fx:id="scrollAdminMed" minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="702.0" />
+                           </content>
+                        </ScrollPane>
+                        <Rectangle arcWidth="5.0" fill="WHITE" height="29.0" layoutX="29.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="256.0" />
+                        <Label layoutX="41.0" layoutY="-3.0" text="Selecciona residente">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="41.0" layoutY="33.0" text="Nombre">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <ImageView fx:id="selFotoRes" fitHeight="136.0" fitWidth="200.0" layoutX="415.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../lib/Placeholder.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="400.0" layoutY="33.0" text="Foto">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <JFXComboBox fx:id="selResidente" focusColor="BLACK" layoutX="29.0" layoutY="65.0" onAction="#selResidenteAction" prefHeight="27.0" prefWidth="336.0" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </ScrollPane>
+            <JFXButton buttonType="RAISED" layoutX="38.0" layoutY="50.0" onAction="#navResidenteAction" prefHeight="44.0" prefWidth="125.0" style="-fx-background-color: grey;" text="RESIDENTES" textAlignment="CENTER" textFill="WHITE" />
+            <JFXButton buttonType="RAISED" layoutX="39.0" layoutY="104.0" onAction="#navAddResAction" prefHeight="44.0" prefWidth="125.0" style="-fx-background-color: grey;" text="AGREGAR &#10;RESIDENTES" textAlignment="CENTER" textFill="WHITE" />
+            <JFXButton buttonType="RAISED" layoutX="40.0" layoutY="157.0" onAction="#navSubMedAction" prefWidth="125.0" style="-fx-background-color: grey;" text="SUBMINISTART&#10;MEDICAMENTO" textAlignment="CENTER" textFill="WHITE" />
+            <JFXButton buttonType="RAISED" layoutX="40.0" layoutY="211.0" onAction="#navInvMedAction" prefWidth="125.0" style="-fx-background-color: grey;" text="INVENTARIO&#10;MEDICAMENTO" textAlignment="CENTER" textFill="WHITE" />
+            <JFXButton buttonType="RAISED" layoutX="41.0" layoutY="264.0" onAction="#navRecMedAction" prefWidth="125.0" style="-fx-background-color: grey;" text="RECORDATORIO&#10;MEDICAMENTO" textAlignment="CENTER" textFill="WHITE" />
+            <JFXButton buttonType="RAISED" layoutX="41.0" layoutY="318.0" onAction="#navAddMedAction" prefWidth="125.0" style="-fx-background-color: grey;" text="AGREGAR&#10;MEDICAMENTO" textAlignment="CENTER" textFill="WHITE" />
+            <JFXButton buttonType="RAISED" layoutX="40.0" layoutY="371.0" onAction="#navRegEveAction" prefWidth="125.0" style="-fx-background-color: grey;" text="REGISTRAR&#10;EVENTO" textAlignment="CENTER" textFill="WHITE" />
+            <JFXDialog fx:id="dialogParent">
                <children>
-                  <Rectangle arcWidth="5.0" fill="WHITE" height="339.0" layoutX="12.0" layoutY="12.0" stroke="#00000059" strokeType="INSIDE" width="756.0" />
-                  <Rectangle arcWidth="5.0" fill="WHITE" height="29.0" layoutX="28.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="251.0" />
-                  <Rectangle arcWidth="5.0" fill="WHITE" height="291.0" layoutX="13.0" layoutY="379.0" stroke="#00000059" strokeType="INSIDE" width="756.0" />
-                  <Rectangle arcWidth="5.0" fill="WHITE" height="29.0" layoutX="29.0" layoutY="367.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="168.0" />
-                  <Rectangle arcWidth="5.0" fill="#979797" height="44.0" layoutX="29.0" layoutY="400.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="704.0" />
-                  <Label layoutX="42.0" layoutY="364.0" text="Administrar">
-                     <font>
-                        <Font size="25.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="51.0" layoutY="412.0" text="Nombre">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="415.0" layoutY="412.0" text="Dosis">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="252.0" layoutY="412.0" text="Medicamento">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <ScrollPane hbarPolicy="NEVER" layoutX="29.0" layoutY="444.0" prefHeight="206.0" prefWidth="704.0">
-                     <content>
-                        <AnchorPane fx:id="scrollAdminMed" minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="702.0" />
-                     </content>
-                  </ScrollPane>
-                  <Label layoutX="561.0" layoutY="412.0" text="Horario">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Rectangle arcWidth="5.0" fill="WHITE" height="29.0" layoutX="29.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="256.0" />
-                  <Label layoutX="41.0" layoutY="-3.0" text="Selecciona residente">
-                     <font>
-                        <Font size="25.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="41.0" layoutY="33.0" text="Nombre">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <ImageView fx:id="selFotoRes" fitHeight="136.0" fitWidth="200.0" layoutX="415.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../lib/Placeholder.png" />
-                     </image>
-                  </ImageView>
-                  <Label layoutX="400.0" layoutY="33.0" text="Foto">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <JFXComboBox fx:id="selResidente" focusColor="BLACK" layoutX="29.0" layoutY="65.0" onAction="#selResidenteAction" prefHeight="27.0" prefWidth="336.0" />
+                  <JFXDialogLayout fx:id="dialogLayout" prefHeight="287.0" prefWidth="402.0">
+                     <children>
+                        <StackPane fx:id="successDialog" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="287.0" prefWidth="402.0">
+                           <children>
+                              <AnchorPane prefHeight="287.0" prefWidth="341.0">
+                                 <children>
+                                    <Label layoutX="61.0" layoutY="207.0" text="Agregado Exitosamente">
+                                       <font>
+                                          <Font size="25.0" />
+                                       </font>
+                                    </Label>
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="132.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../lib/success.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </StackPane>
+                        <StackPane fx:id="erroDialog" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="287.0" prefWidth="402.0">
+                           <children>
+                              <AnchorPane prefHeight="287.0" prefWidth="341.0">
+                                 <children>
+                                    <Label layoutX="85.0" layoutY="207.0" text="No se pudo agregar">
+                                       <font>
+                                          <Font size="25.0" />
+                                       </font>
+                                    </Label>
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="132.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../lib/error.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </StackPane>
+                     </children>
+                  </JFXDialogLayout>
                </children>
-            </AnchorPane>
-         </content>
-      </ScrollPane>
-      <JFXButton buttonType="RAISED" layoutX="38.0" layoutY="50.0" onAction="#navResidenteAction" prefHeight="44.0" prefWidth="125.0" style="-fx-background-color: grey;" text="RESIDENTES" textAlignment="CENTER" textFill="WHITE" />
-      <JFXButton buttonType="RAISED" layoutX="39.0" layoutY="104.0" onAction="#navAddResAction" prefHeight="44.0" prefWidth="125.0" style="-fx-background-color: grey;" text="AGREGAR &#10;RESIDENTES" textAlignment="CENTER" textFill="WHITE" />
-      <JFXButton buttonType="RAISED" layoutX="40.0" layoutY="157.0" onAction="#navSubMedAction" prefWidth="125.0" style="-fx-background-color: grey;" text="SUBMINISTART&#10;MEDICAMENTO" textAlignment="CENTER" textFill="WHITE" />
-      <JFXButton buttonType="RAISED" layoutX="40.0" layoutY="211.0" onAction="#navInvMedAction" prefWidth="125.0" style="-fx-background-color: grey;" text="INVENTARIO&#10;MEDICAMENTO" textAlignment="CENTER" textFill="WHITE" />
-      <JFXButton buttonType="RAISED" layoutX="41.0" layoutY="264.0" onAction="#navRecMedAction" prefWidth="125.0" style="-fx-background-color: grey;" text="RECORDATORIO&#10;MEDICAMENTO" textAlignment="CENTER" textFill="WHITE" />
-      <JFXButton buttonType="RAISED" layoutX="41.0" layoutY="318.0" onAction="#navAddMedAction" prefWidth="125.0" style="-fx-background-color: grey;" text="AGREGAR&#10;MEDICAMENTO" textAlignment="CENTER" textFill="WHITE" />
-      <JFXButton buttonType="RAISED" layoutX="40.0" layoutY="371.0" onAction="#navRegEveAction" prefWidth="125.0" style="-fx-background-color: grey;" text="REGISTRAR&#10;EVENTO" textAlignment="CENTER" textFill="WHITE" />
+            </JFXDialog>
+         </children>
+      </AnchorPane>
    </children>
-</AnchorPane>
+</StackPane>

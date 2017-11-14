@@ -37,4 +37,29 @@ public class Domicilios extends AdministrarConecciones {
 		
 		return dom;
 	}
+	
+	public Domicilio domiciliosSelect(int id) {
+		Domicilio tmp = new Domicilio();
+		ResultSet res;
+		try {
+			res = openConection().createStatement().executeQuery("select * from APP.DOMICILIO where domicilioid="+id);
+			if(res!=null) {
+				while(res.next()) {
+					tmp.IDDomicilio=(Integer) new Integer(res.getString("DOMICILIOID").toString());
+					tmp.Calle=res.getString("CALLE").toString();
+					tmp.Colonia=res.getString("COLONIA").toString();
+					tmp.Estado=res.getString("ESTADO").toString();
+					tmp.Municipio=res.getString("MUNICIPIO").toString();
+					tmp.Pais=res.getString("PAIS").toString();
+				}
+				
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return tmp;
+	}
 }

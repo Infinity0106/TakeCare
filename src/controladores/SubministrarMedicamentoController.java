@@ -8,7 +8,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
-import modulos.Familiar;
 import modulos.Medicamento;
 import modulos.Residente;
 
@@ -18,7 +17,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXDialog;
+import com.jfoenix.controls.JFXDialogLayout;
 
+import baseDeDatos.Medicamentos;
 import baseDeDatos.Residentes;
 import controladores.CambiarEscena;
 
@@ -26,6 +28,21 @@ public class SubministrarMedicamentoController {
 	
 	private CambiarEscena adminNav = new CambiarEscena();
 
+	@FXML
+    private StackPane rootStack;
+	
+	@FXML
+    private JFXDialog dialogParent;
+
+    @FXML
+    private JFXDialogLayout dialogLayout;
+
+    @FXML
+    private StackPane successDialog;
+
+    @FXML
+    private StackPane erroDialog;
+	
     @FXML
     private AnchorPane scrollAdminMed;
     
@@ -35,12 +52,11 @@ public class SubministrarMedicamentoController {
     @FXML
     private JFXComboBox<Label> selResidente;
     
-    private ArrayList<Residente> Residentes;
+    private ArrayList<Residente> Residentes=new ArrayList<Residente>();
     
     private Residente resSeleccionado;
     
-    
-    private ArrayList<Medicamento>tmpMed= new ArrayList<Medicamento>();
+    private ArrayList<Medicamento> tmpMed = new ArrayList<Medicamento>();
 
     @FXML
     void navAddMedAction(ActionEvent event) {
@@ -74,11 +90,13 @@ public class SubministrarMedicamentoController {
     
     @FXML
     void navRecMedAction(ActionEvent event) {
-    	this.killObjects();
+    		adminNav.loadRecMed();
+    		this.killObjects();
     }
     
     @FXML 
     void navInvMedAction(ActionEvent event) {
+    		adminNav.loadInvMed();
     		this.killObjects();
     }
     
@@ -92,6 +110,9 @@ public class SubministrarMedicamentoController {
     		selResidente.getSelectionModel().select(0);
     		selFotoRes.setImage(new Image(new File(Residentes.get(0).FotoUrl.toString()).toURI().toString()));
     		resSeleccionado = Residentes.get(0);
+    		tmpMed=new Medicamentos().medicamentosSelect(resSeleccionado.IDResidente);
+    		System.out.println(tmpMed.get(0));
+    		this.renderMedTable();
     	} catch (SQLException e) {
     		e.printStackTrace();
     	} catch (ClassNotFoundException e) {
@@ -107,26 +128,29 @@ public class SubministrarMedicamentoController {
 			}
 		}
 		selFotoRes.setImage(new Image(new File(resSeleccionado.FotoUrl.toString()).toURI().toString()));
+		
+		tmpMed=new Medicamentos().medicamentosSelect(resSeleccionado.IDResidente);
+		this.renderMedTable();
     }
     
     void renderMedTable() {
-    	int index=0;
-    	scrollAdminMed.getChildren().clear();
-    	for(Medicamento Med: tmpMed) {
-    		try {
-    			FXMLLoader loader = new FXMLLoader(getClass().getResource(""));
-				StackPane pane = loader.load();
-				CellAdminMedController  con = loader.getController();
-//				con.setValues(Med.Nombre, , Med.Medicamento, Med.Nombre1); 
-				pane.setLayoutY(index*100-1);
-				scrollAdminMed.setPrefHeight(index*100-1+100);
-				scrollAdminMed.getChildren().add(pane);
-    		}catch(IOException e) {
-    			e.printStackTrace();
-    		}
-    		index+=1;
-    	}
-}
+	    	int index=0;
+	    	scrollAdminMed.getChildren().clear();
+	    	for(Medicamento Med: tmpMed) {
+	    		try {
+	    			FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/CellAdminMed.fxml"));
+					StackPane pane = loader.load();
+					CellAdminMedController  con = loader.getController();
+					con.setValues(Med.Nombre, Med.Presentacion, Med.Cantidad, resSeleccionado.IDResidente, Med.IDMedicamento);
+					pane.setLayoutY(index*100-1);
+					scrollAdminMed.setPrefHeight(index*100-1+100);
+					scrollAdminMed.getChildren().add(pane);
+	    		}catch(IOException e) {
+	    			e.printStackTrace();
+	    		}
+	    		index+=1;
+	    	}
+	}
     
     void killObjects() {
 		adminNav=null;

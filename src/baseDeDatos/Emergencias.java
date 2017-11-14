@@ -37,4 +37,25 @@ public class Emergencias extends AdministrarConecciones{
 		return eme;
 	}
 
+	public Emergencia emergenciasSelect(int id) {
+		Emergencia tmp = new Emergencia();
+		ResultSet res;
+		try {
+			res = openConection().createStatement().executeQuery("select * from APP.SERVICIOEMERGENCIA where residenteid="+id);
+			if(res!=null) {
+				while(res.next()) {
+					tmp.IDEmergencia=(Integer) new Integer(res.getString("SERVICIOEMEID").toString());
+					tmp.Clave=res.getString("CLAVE").toString();
+					tmp.Telefono=res.getString("TELEFONO").toString();
+				}
+				
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return tmp;
+	}
 }

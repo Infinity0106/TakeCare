@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="764.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.CellRecordatorioController">
+   <children>
+      <Label fx:id="nombre" layoutX="13.0" layoutY="14.0" prefHeight="53.0" prefWidth="162.0" text="Nombre" />
+      <Label fx:id="med" layoutX="189.0" layoutY="14.0" prefHeight="54.0" prefWidth="156.0" text="Medicamento" />
+      <Label fx:id="familiar" layoutX="360.0" layoutY="16.0" prefHeight="50.0" prefWidth="126.0" text="Familiar" />
+      <Label fx:id="tel" layoutX="499.0" layoutY="13.0" prefHeight="54.0" prefWidth="126.0" text="Telefono" />
+      <Label fx:id="cant" layoutX="640.0" layoutY="14.0" prefHeight="53.0" prefWidth="109.0" text="Cantidad" />
+   </children>
+</AnchorPane>

@@ -15,5 +15,7 @@ public class Residente {
 	public ArrayList<Familiar> Familiares;
 	public Historial HistorialEstadia;
 	public Emergencia EmergenciaMedica;
+	public Hospital ServicioHospital;
 	public ArrayList<Medicamento> Medicamentos;
+	public ArrayList<Evento> Eventos;
 }

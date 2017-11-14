@@ -4,7 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import modulos.Historial;;
+import modulos.Historial;
 
 public class Historiales extends AdministrarConecciones {
 	public Historial hospitalInsert(Historial tmp, int idRes) {
@@ -34,6 +34,25 @@ public class Historiales extends AdministrarConecciones {
 			e.printStackTrace();
 			tmp.IDHistorial=-1;
 		}
+		return tmp;
+	}
+	
+	public Historial historialesSelect(int id) {
+		Historial tmp = new Historial();
+		ResultSet res;
+		try {
+			res = openConection().createStatement().executeQuery("select * from APP.HISTORIAL  where residenteid="+id);
+			if(res!=null) {
+				while(res.next()) {
+					tmp.IDHistorial=(Integer) new Integer(res.getString("HISTORIALID").toString());
+				}
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		return tmp;
 	}
 }

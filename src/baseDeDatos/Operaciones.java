@@ -3,6 +3,7 @@ package baseDeDatos;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import modulos.Operacion;
 
@@ -35,5 +36,30 @@ public class Operaciones extends AdministrarConecciones{
 			op.IDOperacion=-1;
 		}
 		return op;
+	}
+	
+	public ArrayList<Operacion> operacionesSelect(int id){
+		ArrayList<Operacion> tmp = new ArrayList<Operacion>();
+		ResultSet res;
+		try {
+			res = openConection().createStatement().executeQuery("select * from APP.OPERACION where historialid="+id);
+			if(res!=null) {
+				while(res.next()) {
+					Operacion tmpo = new Operacion();
+					tmpo.Nombre=res.getString("NOMBRE").toString();
+					tmpo.Fecha=res.getString("FECHA").toString();
+					tmpo.Tipo=res.getString("TIPO").toString();
+					tmpo.IDOperacion=(Integer) new Integer(res.getString("OPERACIONID").toString());
+					tmp.add(tmpo);
+				}
+				
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return tmp;
 	}
 }

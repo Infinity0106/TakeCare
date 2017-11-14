@@ -74,7 +74,6 @@ public class RegistrarEventoController {
 	    	    	String residenteSeleccionado = (String)selResidente.getValue().getText();
 	    	
 	    	    	// Buscar el id del residente
-	    	    	int idResidenteSeleccionado = -1;
 	    	    	for(int i = 0; i < Residentes.size(); i++) {
 	    	    		Residente residenteAux = Residentes.get(i);
 	    	    		if(residenteAux.Nombre == residenteSeleccionado) {
@@ -84,7 +83,6 @@ public class RegistrarEventoController {
 	    	    	}
 	    	    	
 	    	    	// Generar objeto residente
-	    	    	// TODO
 	    	    	eventoLocal = new Evento();
 	    	    	eventoLocal.enfermera = eveNombre.getText();
 	    	    	eventoLocal.fecha = eveFecha.getValue().toString();
@@ -148,13 +146,13 @@ public class RegistrarEventoController {
     
     @FXML
     void navInvMedAction(ActionEvent event) {
-    		//TODO
+    		adminNav.loadInvMed();
     		this.killObjects();
     }
     
     @FXML
     void navRecMedAction(ActionEvent event) {
-    		//TODO
+    		adminNav.loadRecMed();
     		this.killObjects();
     }
 
