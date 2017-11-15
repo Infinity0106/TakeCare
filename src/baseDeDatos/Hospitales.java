@@ -37,6 +37,33 @@ public class Hospitales extends AdministrarConecciones {
 		return hos;
 	}
 	
+	public Boolean hospitalesUpdate(Hospital hosp) {
+		Boolean respu=false;
+		try {
+			String query = "update APP.SERVICIOHOSPITALARIO set\n" + 
+					"	nombre='"+hosp.Nombre+"',telefono='"+hosp.Telefono+"'\n" + 
+					"	where servicioHospID="+hosp.IDHospital;
+			System.out.print(query);
+			PreparedStatement preS = openConection().prepareStatement(query);
+			if(!(preS.executeUpdate()>0)) {
+				respu=false;
+			}else {
+				respu=true;
+			}
+			if(!new Domicilios().domiciliosUpdate(hosp.Direccion)) {
+				respu=false;
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+			respu=false;
+		}catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			respu=false;
+		}
+		
+		return respu;
+	}
+	
 	public Hospital hospitalesSelect(int id) {
 		Hospital tmp = new Hospital();
 		ResultSet res;

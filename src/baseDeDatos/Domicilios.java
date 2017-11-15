@@ -38,6 +38,30 @@ public class Domicilios extends AdministrarConecciones {
 		return dom;
 	}
 	
+	public Boolean domiciliosUpdate(Domicilio dom) {
+		Boolean respu=false;
+		try {
+			String query = "update app.Domicilio set\n" + 
+					"	calle='"+dom.Calle+"', colonia='"+dom.Colonia+"', estado='"+dom.Estado+"', municipio='"+dom.Municipio+"', pais='"+dom.Pais+"'\n" + 
+					"	where domicilioID="+dom.IDDomicilio;
+			System.out.print(query);
+			PreparedStatement preS = openConection().prepareStatement(query);
+			if(!(preS.executeUpdate()>0)) {
+				respu=false;
+			}else {
+				respu=true;
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+			respu=false;
+		}catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			respu=false;
+		}
+		
+		return respu;
+	}
+	
 	public Domicilio domiciliosSelect(int id) {
 		Domicilio tmp = new Domicilio();
 		ResultSet res;

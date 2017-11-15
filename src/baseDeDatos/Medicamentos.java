@@ -94,4 +94,58 @@ public class Medicamentos extends AdministrarConecciones {
 		}
 		return value;
 	}
+	
+	public void medicamentosUpdate(Medicamento med) {
+		try {
+			String query="update APP.MEDICAMENTO set\n" + 
+					"	nombre='"+med.Nombre+"', fechaVencimiento='"+med.FechaVencimiento+"', presentacion='"+med.Presentacion+"', posologia='"+med.Posologia+"', Cantidad="+med.Cantidad+", VecesDia='"+med.VecesDia+"' \n" + 
+					"	where medicamentoid="+med.IDMedicamento;
+			System.out.println(query);
+			PreparedStatement preS = openConection().prepareStatement(query);
+			preS.executeUpdate();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public Boolean restarValores() {
+		Boolean res=true;
+		
+		try {
+			ResultSet result = openConection().createStatement().executeQuery("Select * from APP.MEDICAMENTO");
+			if(result!=null) {
+				while(result.next()) {
+					int dosis = (Integer) new Integer(result.getString("POSOLOGIA").toString());
+					int cantidad = (Integer) new Integer(result.getString("CANTIDAD").toString());
+					Medicamento tmpMed = new Medicamento();
+					if(result.getString("VECESDIA").toString().contains("Dia")) {
+						cantidad-=dosis;
+					}
+					if(result.getString("VECESDIA").toString().contains("Tarde")) {
+						cantidad-=dosis;
+					}
+					if(result.getString("VECESDIA").toString().contains("Noche")) {
+						cantidad-=dosis;
+					}
+					tmpMed.Cantidad = cantidad;
+					tmpMed.IDMedicamento=(Integer) new Integer(result.getString("MEDICAMENTOID").toString());
+					tmpMed.Nombre = result.getString("NOMBRE").toString();
+					tmpMed.FechaVencimiento = result.getString("FECHAVENCIMIENTO").toString();
+					tmpMed.Presentacion = result.getString("PRESENTACION").toString();
+					tmpMed.Posologia =(Integer) new Integer(result.getString("POSOLOGIA").toString());
+					tmpMed.VecesDia = result.getString("VECESDIA").toString();
+					
+					this.medicamentosUpdate(tmpMed);
+				}
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
 }

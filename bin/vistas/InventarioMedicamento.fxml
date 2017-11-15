@@ -8,8 +8,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141" fx:controller="controladores.InventarioMedicamentoController">
+<AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controladores.InventarioMedicamentoController">
    <children>
       <Rectangle arcWidth="5.0" fill="#434343" height="772.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
       <JFXButton buttonType="RAISED" layoutX="38.0" layoutY="51.0" onAction="#navResidenteAction" prefHeight="44.0" prefWidth="125.0" style="-fx-background-color: grey;" text="RESIDENTES" textAlignment="CENTER" textFill="WHITE" />
@@ -19,16 +18,21 @@
       <JFXButton buttonType="RAISED" layoutX="38.0" layoutY="274.0" onAction="#navRecMedAction" prefWidth="125.0" style="-fx-background-color: grey;" text="RECORDATORIO&#10;MEDICAMENTO" textAlignment="CENTER" textFill="WHITE" />
       <JFXButton buttonType="RAISED" layoutX="38.0" layoutY="329.0" onAction="#navAddMedAction" prefWidth="125.0" style="-fx-background-color: grey;" text="AGREGAR&#10;MEDICAMENTO" textAlignment="CENTER" textFill="WHITE" />
       <JFXButton buttonType="RAISED" layoutX="38.0" layoutY="384.0" onAction="#navRegEveAction" prefWidth="125.0" style="-fx-background-color: grey;" text="REGISTRAR&#10;EVENTO" textAlignment="CENTER" textFill="WHITE" />
-      <Label layoutX="210.0" layoutY="10.0" text="SUBMINISTRAR MEDICAMENTO">
+      <Label layoutX="210.0" layoutY="10.0" text="INVENTARIO MEDICAMENTO">
          <font>
             <Font size="32.0" />
          </font>
       </Label>
       <Line endX="360.0" layoutX="337.0" layoutY="49.0" startX="-127.0" />
-      <ScrollPane hbarPolicy="NEVER" layoutX="212.0" layoutY="63.0" prefHeight="693.0" prefWidth="794.0" vbarPolicy="ALWAYS">
+      <ScrollPane hbarPolicy="NEVER" layoutX="212.0" layoutY="63.0" prefHeight="624.0" prefWidth="794.0" vbarPolicy="ALWAYS">
         <content>
           <AnchorPane fx:id="scrollRes" minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="794.0" />
         </content>
       </ScrollPane>
+      <JFXButton buttonType="RAISED" layoutX="213.0" layoutY="701.0" onAction="#modPastillero" prefHeight="56.0" prefWidth="792.0" style="-fx-background-color: #d8d8d8;" text="Pastillero llenado">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>
