@@ -24,6 +24,7 @@ public class CellInventarioController {
     		String md="",mt="",mn="";
 //    		System.out.println(res.Medicamentos);
     		for(Medicamento med: res.Medicamentos) {
+    			System.out.println(med.Nombre);
     			if(med.VecesDia.contains("Dia")) {
     				md+=med.Nombre+" "+med.Posologia+",   ";
     			}
@@ -34,7 +35,6 @@ public class CellInventarioController {
 				mn+=med.Nombre+" "+med.Posologia+",   ";
 			}
     		}
-
     		medDia.setText(md);
     		medTarde.setText(mt);
     		medNoche.setText(mn);

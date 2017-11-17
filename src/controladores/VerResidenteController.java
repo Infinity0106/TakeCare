@@ -162,7 +162,7 @@ public class VerResidenteController {
     
     private ArrayList<modulos.Residente> Residentes = new ArrayList<modulos.Residente>();
     
-    private modulos.Residente resSeleccionado = new modulos.Residente();
+    private modulos.Residente resSeleccionado = null;
     
     private List<Object> tablaEnfermedades=new ArrayList<Object>();
     
@@ -278,16 +278,19 @@ public class VerResidenteController {
     	
 	    	try {
 	    		Residentes = new Residentes().residenteSelectNombre();
-	    		for(int i=0;i<Residentes.size();i++) {
-	    			selResNombre.getItems().add(new Label(Residentes.get(i).Nombre.toString()));
+
+	    		if(Residentes.size()>0) {
+		    		for(int i=0;i<Residentes.size();i++) {
+		    			selResNombre.getItems().add(new Label(Residentes.get(i).Nombre.toString()));
+		    		}
+		    		selResNombre.getSelectionModel().select(0);
+		    		selResFoto.setImage(new Image(new File(Residentes.get(0).FotoUrl.toString()).toURI().toString()));
+		    		infFoto.setImage(new Image(new File(Residentes.get(0).FotoUrl.toString()).toURI().toString()));
+		    		imageURL=Residentes.get(0).FotoUrl.toString();
+		    		resSeleccionado = Residentes.get(0);
+		    		System.out.println(Residentes.get(0).IDResidente);
+				resSeleccionado=new Residentes().residenteSelect(Residentes.get(0).IDResidente);
 	    		}
-	    		selResNombre.getSelectionModel().select(0);
-	    		selResFoto.setImage(new Image(new File(Residentes.get(0).FotoUrl.toString()).toURI().toString()));
-	    		infFoto.setImage(new Image(new File(Residentes.get(0).FotoUrl.toString()).toURI().toString()));
-	    		imageURL=Residentes.get(0).FotoUrl.toString();
-	    		resSeleccionado = Residentes.get(0);
-	    		System.out.println(Residentes.get(0).IDResidente);
-			resSeleccionado=new Residentes().residenteSelect(Residentes.get(0).IDResidente);
 	    	} catch (SQLException e) {
 	    		e.printStackTrace();
 	    	} catch (ClassNotFoundException e) {
@@ -296,13 +299,15 @@ public class VerResidenteController {
 	    	infSex.getItems().add(new Label("Hombre"));
 	    infSex.getItems().add(new Label("Mujer"));
 	    
-	    for(Enfermedad enf : resSeleccionado.HistorialEstadia.Enfermedades) {
-	    		tablaEnfermedades.add(enf);
+	    if(resSeleccionado!=null) {
+		    	for(Enfermedad enf : resSeleccionado.HistorialEstadia.Enfermedades) {
+		    		tablaEnfermedades.add(enf);
+		    	}
+		    	for(Operacion op : resSeleccionado.HistorialEstadia.Operaciones) {
+		    		tablaEnfermedades.add(op);
+		    	}
+		    	this.setValues();
 	    }
-	    for(Operacion op : resSeleccionado.HistorialEstadia.Operaciones) {
-	    		tablaEnfermedades.add(op);
-	    }
-	    	this.setValues();
     }
     
     @FXML

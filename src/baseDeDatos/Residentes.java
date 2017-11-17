@@ -3,9 +3,13 @@ package baseDeDatos;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import baseDeDatos.AdministrarConecciones;
+import controladores.CellRecordatorioController;
+import modulos.Familiar;
 import modulos.Medicamento;
 import modulos.Residente;
 
@@ -62,7 +66,158 @@ public class Residentes extends AdministrarConecciones {
 		}
 		return value;
 	}
+	
+	public ArrayList<Residente> residentesRecordatorio(String fecha, String dosis){
+		ArrayList<Residente> values = new ArrayList<Residente>();
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate fechaDate = LocalDate.parse(fecha, formatter);
+        LocalDate nowDate = LocalDate.now();
 
+        int DiferenciaDeDias = Math.abs(fechaDate.compareTo(nowDate));
+		
+		try {
+			ResultSet res = openConection().createStatement().executeQuery("SELECT * \n" + 
+					"		FROM APP.MEDICAMENTO MED JOIN APP.RESIDENTE RES ON MED.RESIDENTEID=RES.RESIDENTEID");
+			if(res!=null) {
+				while(res.next()) {
+					Residente tmpRes = new Residente();
+					tmpRes.Medicamentos = new ArrayList<Medicamento>();
+					tmpRes.Familiares = new ArrayList<Familiar>();
+					int tmpDosis = res.getInt("posologia");
+					int cantidadFinal = res.getInt("cantidad");
+					for(int i=0;i<DiferenciaDeDias;i++) {						
+						if(res.getString("vecesdia").contains("Dia")) {
+							cantidadFinal-=tmpDosis;
+						}
+						if(res.getString("vecesdia").contains("Tarde")) {
+							cantidadFinal-=tmpDosis;
+						}
+						if(res.getString("vecesdia").contains("Noche")) {
+							cantidadFinal-=tmpDosis;
+						}
+					}
+					if(cantidadFinal<= new Integer(dosis)) {
+						ResultSet res2 = openConection().createStatement().executeQuery("select * from (\n" + 
+								"		select ROW_NUMBER() OVER() AS rownum, APP.Familiar.*\n" + 
+								"		from APP.Familiar\n" + 
+								"		where residenteID="+res.getString("residenteid")+"\n" + 
+								"	) tmp\n" + 
+								"	where rownum<=1");
+						if(res2!=null) {
+							while(res2.next()) {
+								Familiar tmpfam = new Familiar();
+								tmpfam.Nombre=res2.getString("nombre");
+								tmpfam.Telefono=res2.getString("telefono");
+								tmpRes.Familiares.add(tmpfam);
+							}
+						}
+						Medicamento tmpMed = new Medicamento();
+						tmpMed.Nombre = res.getString(3);
+						tmpMed.Cantidad = cantidadFinal;
+						tmpRes.Medicamentos.add(tmpMed);
+						
+						tmpRes.Nombre = res.getString(11);
+						values.add(tmpRes);
+					}
+				}
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return values;
+	}
+
+//	public ArrayList<CellRecordatorioController> residentesRecordatorios(String fecha, String dosis) throws ClassNotFoundException, SQLException {
+//		ArrayList<CellRecordatorioController> Elementos = new ArrayList<CellRecordatorioController>();
+//		ArrayList<Medicamento> MedicamentosDB = new ArrayList<Medicamento>();
+//		
+//		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+//	    LocalDate fechaDate = LocalDate.parse(fecha, formatter);
+//	    LocalDate nowDate = LocalDate.now();
+//	
+//	    int DiferenciaDeDias = Math.abs(fechaDate.compareTo(nowDate));
+//        
+//		
+//        System.out.println("DiferenciaDias: " + DiferenciaDeDias);
+//        
+//		// Obtener tope de pastillas
+//		int TopePastillas = Integer.parseInt(dosis);
+//		
+//		// Obtener Medicamentos
+//		ResultSet res = openConection().createStatement().executeQuery(
+//				" 	select nombre, cantidad, posologia, medicamentoID, residenteID" + 
+//				"	from medicamento"
+//				);
+//		System.out.println(res == null);
+//		if(res != null) {
+//			while(res.next()) {
+//				Medicamento MedicamentoAAgregar = new Medicamento();
+//				MedicamentoAAgregar.Nombre = res.getString("nombre");
+//				MedicamentoAAgregar.Cantidad = res.getInt("cantidad");
+//				MedicamentoAAgregar.Posologia = Integer.parseInt(res.getString("posologia"));
+//				MedicamentoAAgregar.IDMedicamento = res.getInt("medicamentoID");
+//				MedicamentoAAgregar.IDResidente = res.getInt("residenteID");
+//				 System.out.println(MedicamentoAAgregar.Nombre);
+//				
+//				MedicamentosDB.add(MedicamentoAAgregar);
+//			}
+//		}
+//		
+//		// Evaluar medicamentos
+//		for(Medicamento med : MedicamentosDB) {
+//			 System.out.println("- " + MedicamentosDB.size());
+//			// Obtener cantidad de medicamentos disponibles para ese medicamento
+//			int iCantidadMedicamentosDisponibles = med.Cantidad - (DiferenciaDeDias * med.Posologia); 
+//			 System.out.println("- " + "ICantidadMedDisp:" + iCantidadMedicamentosDisponibles);
+//			if(iCantidadMedicamentosDisponibles <= TopePastillas) {
+//				CellRecordatorioController Elemento = new CellRecordatorioController();
+//				
+//				// Pbtiene los datos del residente y el familiar
+//				ResultSet res2 = openConection().createStatement().executeQuery(
+//						" 	SELECT res.nombre, telefono, fam.nombre as nombre_familiar	" + 
+//						"	FROM residente res											" +  
+//						"	INNER JOIN familiar fam										" + 
+//						"	ON res.residenteID = fam.residenteID						" +  
+//						"	WHERE res.residenteID = " + med.IDResidente
+//						);
+//				ResultSet res3 = openConection().createStatement().executeQuery(
+//						" 	SELECT COUNT(*)	" + 
+//						"	FROM residente res											" 
+//						);
+//				System.out.println(res3.next());
+//				System.out.println(res3.getInt(1));
+//
+//				res3 = openConection().createStatement().executeQuery(
+//						" 	SELECT COUNT(*) " + 
+//						"	FROM familiar fam											" 
+//						);
+//				System.out.println(res3.next());
+//				System.out.println(res3.getInt(1));
+//				
+//				// Evalua los datos para generar un elemento de la lista y agregarlos
+//				 System.out.println("a"); 
+//				System.out.println("-"  + null);
+//				 System.out.println("b");
+//				if(res2 != null)
+//				{
+//					while(res2.next()) {
+//						System.out.println("aaaaa");
+//						Elemento.setValues(res2.getString(1), med.Nombre, res2.getString(2), res2.getString(3), String.valueOf(iCantidadMedicamentosDisponibles));
+//					 	System.out.println("-  " + Elemento.nombre.getText());
+//					 	Elementos.add(Elemento);
+//					 	}
+//				}
+//			}
+//		}
+//		
+//		
+//		return Elementos;
+//	}
+	
 	public Boolean residenteUpdate(Residente res) {
 		Boolean respu=false;
 		try {
@@ -91,12 +246,6 @@ public class Residentes extends AdministrarConecciones {
 			respu=false;
 		}
 		return respu;
-	}
-	
-	public ArrayList<Residente> residentesRecordatorio(String fecha, String dosis) {
-		ArrayList<Residente> tmp = new ArrayList<Residente>();
-		//TODO
-		return tmp;
 	}
 	
 	public ArrayList<Residente> residenteInventario() throws SQLException, ClassNotFoundException{

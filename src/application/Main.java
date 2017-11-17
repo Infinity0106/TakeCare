@@ -12,6 +12,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStageArg) {
 		try {
+			CrearBD.main(null);
 			Parent root = FXMLLoader.load(getClass().getResource("/vistas/VerResidente.fxml"));
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
@@ -20,11 +21,6 @@ public class Main extends Application {
 			primaryStageArg.show();
 			primaryStage = primaryStageArg;
 		} catch(Exception e) {
-			e.printStackTrace();
-		}
-		try {
-			CrearBD.main(null);
-		}catch(Exception e) {
 			e.printStackTrace();
 		}
 	}

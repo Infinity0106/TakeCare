@@ -166,6 +166,14 @@ create table Evento(
 	foreign key (residenteID) references Residente(residenteID)
 );
 
+create table LastUpdate(
+	dia int,
+	mes int,
+	hora int,
+	minutos int
+);
+
+drop table APP.LASTUPDATE;
 drop table APP.MEDICAMENTO;
 drop table APP.ENFERMEDAD;
 drop table APP.OPERACION;
@@ -276,7 +284,7 @@ select t.tablename  as name
 	
 	select APP.RESIDENTE.nombre, APP.MEDICAMENTO.nombre as nombremed, APP.MEDICAMENTO.vecesDia, APP.MEDICAMENTO.posologia
 	from APP.RESIDENTE join APP.MEDICAMENTO on APP.RESIDENTE.residenteID = APP.MEDICAMENTO.residenteID
-	order by APP.RESIDENTE.nombre;
+	order by APP.RESIDENTE.nombre
 	
 	
 	select * from app.residente where residenteid=1
@@ -306,4 +314,16 @@ select t.tablename  as name
 	update APP.SERVICIOEMERGENCIA set
 	clave='', telefono=''
 	where servicioEmeID=
+	
+	select * from (
+		select ROW_NUMBER() OVER() AS rownum, APP.Familiar.*
+		from APP.Familiar
+		where residenteID=1
+	) tmp
+	where rownum<=1
+	
+	SELECT * FROM APP.MEDICAMENTO
+	
+	SELECT * 
+	FROM APP.MEDICAMENTO MED JOIN APP.RESIDENTE RES ON MED.RESIDENTEID=RES.RESIDENTEID
 

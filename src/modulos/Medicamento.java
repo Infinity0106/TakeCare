@@ -13,4 +13,5 @@ public class Medicamento {
 	public String Contradicciones;
 	public String UsoTerapeutico;
 	public int IDMedicamento;
+	public int IDResidente;
 }

@@ -83,6 +83,7 @@ public class InventarioMedicamentoController {
 			arrResidente = new Residentes().residenteInventario();
 			scrollRes.getChildren().clear();
 		    	for(Residente Res: arrResidente) {
+		    		System.out.println(Res.Nombre);
 		    		try {
 		    			FXMLLoader loader = new FXMLLoader(getClass().getResource("/vistas/CellInventario.fxml"));
 					AnchorPane pane = loader.load();

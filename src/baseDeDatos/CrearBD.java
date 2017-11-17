@@ -19,7 +19,8 @@ public class CrearBD {
 				historial=true,
 				servEme=true,
 				servHosp=true,
-				evento=true;
+				evento=true,
+				lastUpdate=true;
 		
 		Class.forName(DRIVER);
 		Connection con = DriverManager.getConnection(JDBC_URL);
@@ -44,18 +45,8 @@ public class CrearBD {
 			if(res.getString("NAME").equals("RESIDENTE")) residente=false;
 			if(res.getString("NAME").equals("SERVICIOEMERGENCIA")) servEme=false;
 			if(res.getString("NAME").equals("EVENTO")) evento=false;
+			if(res.getString("NAME").equals("LASTUPDATE")) lastUpdate=false;
 		}
-		
-		if(domicilio)
-			con.createStatement().execute("create table Domicilio(\n" + 
-					"	domicilioID integer not null generated always as identity (start with 1, increment by 1) primary key,\n" + 
-					"	calle varchar(75),\n" + 
-					"	colonia varchar(30),\n" + 
-					"	estado varchar(30),\n" + 
-					"	municipio varchar(20),\n" + 
-					"	pais varchar(20)\n" + 
-					")");
-		
 		if(residente)
 			con.createStatement().execute("create table Residente(\n" + 
 					"	residenteID integer not null generated always as identity (start with 1, increment by 1) primary key,\n" + 
@@ -67,14 +58,69 @@ public class CrearBD {
 					"	lugar integer,\n" + 
 					"	cama integer\n" + 
 					")");
-		
+		if(evento)
+			con.createStatement().execute("create table Evento(\n" + 
+					"	eventoID integer not null generated always as identity (start with 1, increment by 1) primary key,\n" + 
+					"	residenteID integer,\n" + 
+					"	enfermera varchar(50),\n" + 
+					"	fecha date,\n" + 
+					"	descripcion varchar(250),\n" + 
+					"	foreign key (residenteID) references Residente(residenteID)\n" + 
+					")");
+		if(domicilio)
+			con.createStatement().execute("create table Domicilio(\n" + 
+					"	domicilioID integer not null generated always as identity (start with 1, increment by 1) primary key,\n" + 
+					"	calle varchar(75),\n" + 
+					"	colonia varchar(30),\n" + 
+					"	estado varchar(30),\n" + 
+					"	municipio varchar(20),\n" + 
+					"	pais varchar(20)\n" + 
+					")");
+		if(familiar)
+			con.createStatement().execute("create table Familiar(\n" + 
+					"	familiarID integer not null generated always as identity (start with 1, increment by 1) primary key,\n" + 
+					"	residenteID integer,\n" + 
+					"	nombre varchar(50),\n" + 
+					"	correo varchar(50),\n" + 
+					"	telefono varchar(20),\n" + 
+					"   relacion varchar(20),\n"+
+					"	domicilioID integer,\n" + 
+					"	foreign key (residenteID) references Residente(residenteID),\n" + 
+					"	foreign key (domicilioID) references Domicilio(domicilioID)\n" + 
+					")");
+		if(servHosp)
+			con.createStatement().execute("create table ServicioHospitalario(\n" + 
+					"	servicioHospID integer not null generated always as identity (start with 1, increment by 1) primary key,\n" + 
+					"	residenteID integer,\n" + 
+					"	domicilioID integer,\n" + 
+					"	nombre varchar(50),\n" + 
+					"	telefono varchar(50),\n" + 
+					"	foreign key (residenteID) references Residente(residenteID),\n" + 
+					"	foreign key (domicilioID) references Domicilio(domicilioID)\n" + 
+					")");
+		if(servEme)
+			con.createStatement().execute("create table ServicioEmergencia(\n" + 
+					"	servicioEmeID integer not null generated always as identity (start with 1, increment by 1) primary key,\n" + 
+					"	residenteID integer,\n" + 
+					"	clave varchar(50),\n" + 
+					"	telefono varchar(20),\n" + 
+					"	foreign key (residenteID) references Residente(residenteID)\n" + 
+					")");
 		if(historial)
 			con.createStatement().execute("create table Historial(\n" + 
 					"	historialID integer not null generated always as identity (start with 1, increment by 1) primary key,\n" + 
 					"	residenteID integer,\n" + 
 					"	foreign key (residenteID) references Residente(residenteID)\n" + 
 					")");
-		
+		if(opreaciones)
+			con.createStatement().execute("create table Operacion( \n" + 
+					"	operacionID integer not null generated always as identity (start with 1, increment by 1) primary key,\n" + 
+					"	historialID integer,	\n" + 
+					"	nombre varchar(50),\n" + 
+					"	fecha date,\n" + 
+					"	tipo varchar(20),\n" + 
+					"	foreign key (historialID) references Historial(historialID)\n" + 
+					")");
 		if(enfermedades)
 			con.createStatement().execute("create table Enfermedad(\n" + 
 					"	enfermedadID integer not null generated always as identity (start with 1, increment by 1) primary key,\n" + 
@@ -85,19 +131,6 @@ public class CrearBD {
 					"	tratamiento varchar(50),\n" + 
 					"	foreign key (historialID) references Historial(historialID)\n" + 
 					")");
-		
-		if(familiar)
-			con.createStatement().execute("create table Familiar(\n" + 
-					"	familiarID integer not null generated always as identity (start with 1, increment by 1) primary key,\n" + 
-					"	residenteID integer,\n" + 
-					"	nombre varchar(50),\n" + 
-					"	correo varchar(50),\n" + 
-					"	telefono varchar(20),\n" + 
-					"	domicilioID integer,\n" + 
-					"	foreign key (residenteID) references Residente(residenteID),\n" + 
-					"	foreign key (domicilioID) references Domicilio(domicilioID)\n" + 
-					")");
-		
 		if(medicamento)
 			con.createStatement().execute("create table Medicamento(\n" + 
 					"	medicamentoID integer not null generated always as identity (start with 1, increment by 1) primary key,\n" + 
@@ -111,45 +144,12 @@ public class CrearBD {
 					"	usoTerapeutico varchar(20),\n" + 
 					"	foreign key (residenteID) references Residente(residenteID)\n" + 
 					")");
-		
-		if(opreaciones)
-			con.createStatement().execute("create table Operacion( \n" + 
-					"	operacionID integer not null generated always as identity (start with 1, increment by 1) primary key,\n" + 
-					"	historialID integer,	\n" + 
-					"	nombre varchar(50),\n" + 
-					"	fecha date,\n" + 
-					"	tipo varchar(20),\n" + 
-					"	foreign key (historialID) references Historial(historialID)\n" + 
-					")");
-		
-		if(servEme)
-			con.createStatement().execute("create table ServicioEmergencia(\n" + 
-					"	servicioEmeID integer not null generated always as identity (start with 1, increment by 1) primary key,\n" + 
-					"	residenteID integer,\n" + 
-					"	clave varchar(50),\n" + 
-					"	telefono varchar(20),\n" + 
-					"	foreign key (residenteID) references Residente(residenteID)\n" + 
-					")");
-		
-		if(servHosp)
-			con.createStatement().execute("create table ServicioHospitalario(\n" + 
-					"	servicioHospID integer not null generated always as identity (start with 1, increment by 1) primary key,\n" + 
-					"	residenteID integer,\n" + 
-					"	domicilioID integer,\n" + 
-					"	nombre varchar(50),\n" + 
-					"	telefono varchar(50),\n" + 
-					"	foreign key (residenteID) references Residente(residenteID),\n" + 
-					"	foreign key (domicilioID) references Domicilio(domicilioID)\n" + 
-					")");
-		
-		if(evento)
-			con.createStatement().execute("create table Evento(\n" + 
-					"	eventoID integer not null generated always as identity (start with 1, increment by 1) primary key,\n" + 
-					"	residenteID integer,\n" + 
-					"	enfermera varchar(50),\n" + 
-					"	fecha date,\n" + 
-					"	descripcion varchar(250),\n" + 
-					"	foreign key (residenteID) references Residente(residenteID)\n" + 
+		if(lastUpdate)
+			con.createStatement().execute("create table LastUpdate(\n" + 
+					"	dia int,\n" + 
+					"	mes int,\n" + 
+					"	hora int,\n" + 
+					"	minutos int\n" + 
 					")");
 		
 		

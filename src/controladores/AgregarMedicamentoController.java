@@ -165,12 +165,14 @@ public class AgregarMedicamentoController {
     void initialize() {
 	    	try {
 	    		Residentes = new Residentes().residenteSelectNombre();
-	    		for(int i=0;i<Residentes.size();i++) {
-	    			selResidente.getItems().add(new Label(Residentes.get(i).Nombre.toString()));
+	    		if(Residentes.size()>0) {
+	    			for(int i=0;i<Residentes.size();i++) {
+	    				selResidente.getItems().add(new Label(Residentes.get(i).Nombre.toString()));
+	    			}
+	    			selResidente.getSelectionModel().select(0);
+	    			selFotoRes.setImage(new Image(new File(Residentes.get(0).FotoUrl.toString()).toURI().toString()));
+	    			resSeleccionado = Residentes.get(0);
 	    		}
-	    		selResidente.getSelectionModel().select(0);
-	    		selFotoRes.setImage(new Image(new File(Residentes.get(0).FotoUrl.toString()).toURI().toString()));
-	    		resSeleccionado = Residentes.get(0);
 	    	} catch (SQLException e) {
 	    		e.printStackTrace();
 	    	} catch (ClassNotFoundException e) {
